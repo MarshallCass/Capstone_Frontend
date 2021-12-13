@@ -1,19 +1,19 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import "./grades.css";
-import jwtDecode from "jwt-decode";
+// import jwtDecode from "jwt-decode";
 
 const DisplayGrades = (props) => {
 
 
 
-     const handleChange = async (productId) => {
-         let token = localStorage.getItem("token")
-         let user = jwtDecode(token);
-         console.log(user)
+    //  const handleChange = async (productId) => {
+    //      let token = localStorage.getItem("token")
+    //      let user = jwtDecode(token);
+    //      console.log(user)
  
-         }
-}
+    //      }
+
 
     return (
         <div>
@@ -26,14 +26,14 @@ const DisplayGrades = (props) => {
                         <th> Comments </th>
                     </tr>
                 </thead>
-                {props.products.map((product) => {   
+                {props.grades.map((grade) => {   
                     return (
                         <tbody>
                             <tr>                        
-                                <td>{grades.student_id}</td>
-                                <td>{grades.grade}</td>
-                                <td>{grades.assignment}</td>
-                                <td>{grades.comments}</td>
+                                <td>{grade.student_id}</td>
+                                <td>{grade.grade}</td>
+                                <td>{grade.assignment}</td>
+                                <td>{grade.comments}</td>
                             </tr>              
                         </tbody>
                     )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Register.css';
+import './register.css';
 
 class Register extends Component {
     constructor(props) {
@@ -107,7 +107,8 @@ class Register extends Component {
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="staff" checked> </input> 
-                    <label class="form-check-label" for="staff">Staff</label>    
+                    <label class="form-check-label" for="staff">Staff</label>  
+                </div>  
                 <div class="card-footer">
                     <button class="btn btn-outline-light btn-lg" type="submit">Register</button>
                 </div>

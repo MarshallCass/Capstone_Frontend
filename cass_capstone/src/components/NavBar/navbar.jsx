@@ -1,7 +1,7 @@
 import React from 'react';
-import './NavBar.css';
+import './navbar.css';
 import { Link } from 'react-router-dom';
-import SearchBar from '../SearchBar/SearchBar';
+import SearchBar from '../SearchBar/searchbar';
 
 
 const NavBar = ({user}) => {

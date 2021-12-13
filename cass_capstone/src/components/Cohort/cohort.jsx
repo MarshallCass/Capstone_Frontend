@@ -1,7 +1,7 @@
 import React from "react";
-import axios from "axios";
-import "./cohorts.css";
-import jwtDecode from "jwt-decode";
+// import axios from "axios";
+import "./cohort.css";
+// import jwtDecode from "jwt-decode";
 
 const DisplayCohorts = (props) => {
 

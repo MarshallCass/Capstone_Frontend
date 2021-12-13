@@ -2,15 +2,14 @@ import './App.css';
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from './Login/login';
-import Register from './Registration/registration';
+import Register from './Registration/register';
 import NavBar from './NavBar/navbar.jsx'; 
-import Home from './Profile/profile';
-import CreateProduct from './Assignments/assignments'
-import DisplayProducts from './Cohort/cohort';
-import ShoppingCart from './Grades/grades'
+// import Home from './Profile/profile';
+import DisplayAssignments from './Assignments/assignments'
+import DisplayCohorts from './Cohort/cohort';
+import DisplayGrades from './Grades/grades'
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
-import Footer from './Footer/Footer';
 
 
 class App extends Component {
@@ -101,7 +100,7 @@ class App extends Component {
     }
     addNewCohort = async (cohort) => {
         try{
-            const response = await axios.post('https://localhost:44394/api/Student', Student);
+            const response = await axios.post('https://localhost:44394/api/Cohort', cohort);
             console.log(response)
             this.cohort = ({'Cohort Name': cohort.cohort_name, 'Student': cohort.student.id})
             this.setState({
@@ -156,7 +155,6 @@ const user = this.state.loggedInUser
 
                
                 </Switch>
-                <Footer/>
                 
             </div>
 
