@@ -1,0 +1,53 @@
+.form-outline{
+    text-align: left;
+  }
+
+.search-bar{
+margin-inline-start: 70%;
+margin-inline-end: 80%;
+padding: 8px ;
+width: 350px;
+position: sticky; 
+}
+
+/* style inputs and link buttons */
+input,
+.btn {
+width: 100%;
+padding: 5%;
+border: none;
+border-radius: 4px;
+margin: 5px 0;
+opacity: 0.85;
+display: inline-block;
+font-size: 17px;
+line-height: 10px;
+text-decoration: none; /* remove underline from anchors */
+}
+
+input:hover,
+.btn:hover {
+opacity: 1;
+}
+
+/* style the submit button */
+button-nav[type="submit"] {
+border-radius: 10px;
+padding: 6px 5px 5px 18px;
+background-color: #567956;
+color: black;
+cursor: pointer;
+width: 60px;
+height: auto;
+}
+
+button-nav[type="submit"]:hover {
+background-color: #45a049;
+width: 50px;
+border-radius: 10px;
+padding: 6px 5px 5px 18px;
+color: white;
+cursor: pointer;
+width: 60px;
+height: auto;
+}
