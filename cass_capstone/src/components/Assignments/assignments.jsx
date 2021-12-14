@@ -39,7 +39,7 @@ const DisplayAssignments = (props) => {
                                 <td>{assignment.assignment_name}</td>
                                 <td>{assignment.assignment_description}</td>
                                 <td>{assignment.assignment_notes}</td>
-                                {/* <td><button class="btn btn-outline-light btn-lg" type="button" onClick={() => handleChange(assignment.id)}>Add Assignment</button></td> */}
+                                {/* <td><button className="btn btn-outline-light btn-lg" type="button" onClick={() => handleChange(assignment.id)}>Add Assignment</button></td> */}
 
                             </tr>              
                         </tbody>

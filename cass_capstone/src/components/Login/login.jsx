@@ -40,7 +40,7 @@ class Login extends Component {
 <div className="container">
 
 <form onSubmit={this.handleSubmit} className="form-signin">
-          <div className="row">
+        <div className="row">
             <div className="col">
                 <div>
                 <h1 className="fs-1 fw-bold mb-5 text-uppercase">Login</h1>
@@ -56,17 +56,16 @@ class Login extends Component {
                     <input type="password" name= "password" id="typePasswordX" class="form-control form-control-lg" onChange={this.handleChange} value={this.state.password} />
                     <label className="form-label fs-5 fw-bold" for="typePasswordX">Password</label>
                   </div>
-                  <div class="card-footer">
+                  <div className="card-footer">
                   <div>
-                  <button class="btn btn-outline-light btn-lg" type="submit">Login</button>
+                  <button className="btn btn-outline-light btn-lg" type="submit">Login</button>
                   </div>                  
-                    <Link to ='/Register'>
-                        <button class="btn btn-outline-light btn-lg" type="submit">Register</button>
+                    <Link to='/register'>
+                        <button className="btn btn-outline-light btn-lg" type="submit">Register</button>
                     </Link>
                   </div>
-            </div>
-            
-          </div>
+            </div>    
+        </div>
           
 </form>
 

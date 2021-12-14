@@ -37,7 +37,7 @@ class SearchBar extends Component {
                         </button-nav>
                         </div>
                     </form>
-                </div>    
+</div>    
 
         )
     }
