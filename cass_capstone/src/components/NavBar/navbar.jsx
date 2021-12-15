@@ -15,17 +15,17 @@ const NavBar = ({ user }) => {
             {user && <h4> Welcome {user.username} </h4>}
             <ul>
                 <React.Fragment>
-                    <Link to='/Home'> <li>Home</li> </Link>
-                    <Link to='/cohort'> <li>Cohorts</li> </Link>
-                    <Link to='/assignments'> <li>Assignments</li> </Link>
-                    <Link to='/grades'> <li>Grades</li> </Link>
+                    <Link to="/Profile"> <li>Home</li> </Link>
+                    <Link to="/Cohort"> <li>Cohorts</li> </Link>
+                    <Link to="/Assignments"> <li>Assignments</li> </Link>
+                    <Link to="/Grades"> <li>Grades</li> </Link>
                     <Link onClick={() => logoutUser()}> <li> Logout </li></Link>
                 </React.Fragment>
 
                 {!user &&
                     <React.Fragment>
-                        <Link to='/login'> <li>Login</li> </Link>
-                        <Link to='/register'> <li>Register</li> </Link>
+                        <Link to="/Login"> <li>Login</li> </Link>
+                        <Link to="/Register"> <li>Register</li> </Link>
                     </React.Fragment>
                 }
             </ul>

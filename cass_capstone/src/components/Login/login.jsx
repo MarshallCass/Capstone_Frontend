@@ -48,20 +48,20 @@ class Login extends Component {
                   <p className="fs-5 text-white-50 mb-4">Please enter your username and password!</p>
 
                   <div className="form-outline form-white mb-4">
-                    <input type="text" name= "username" id="typeUsernameX" class="form-control form-control-lg" onChange={this.handleChange} value={this.state.username}  />
-                    <label className="form-label fs-5 fw-bold" for="typeUsernameX">Username</label>
+                    <input type="text" name="username" id="typeUsernameX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.username}/>
+                    <label className="form-label fs-5 fw-bold" htmlFor="typeUsernameX" value="Username"/>
                   </div>
 
                   <div className="form-outline form-white mb-4">
-                    <input type="password" name= "password" id="typePasswordX" class="form-control form-control-lg" onChange={this.handleChange} value={this.state.password} />
-                    <label className="form-label fs-5 fw-bold" for="typePasswordX">Password</label>
+                    <input type="current-password" name="password" id="typePasswordX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.password}/>
+                    <label className="form-label fs-5 fw-bold" htmlFor="typePasswordX" value="Password"/>
                   </div>
                   <div className="card-footer">
                   <div>
-                  <button className="btn btn-outline-light btn-lg" type="submit">Login</button>
+                  <button className="btn btn-outline-light btn-lg" type="submit"> Login </button>
                   </div>                  
-                    <Link to='/register'>
-                        <button className="btn btn-outline-light btn-lg" type="submit">Register</button>
+                    <Link to="/Register">
+                        <button className="btn btn-outline-light btn-lg" type="submit"> Register </button>
                     </Link>
                   </div>
             </div>    

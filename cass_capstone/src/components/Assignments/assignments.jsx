@@ -31,20 +31,19 @@ const DisplayAssignments = (props) => {
                         <th> Notes </th>
                     </tr>
                 </thead>
-                {props.assignements.map((assignment) => {   
+                {/* {props.assignements.map((assignment) => {    */}
                     return (
                         <tbody>
                             <tr>                        
-                                <td>{assignment.assignment_subject}</td>
+                                {/* <td>{assignment.assignment_subject}</td>
                                 <td>{assignment.assignment_name}</td>
                                 <td>{assignment.assignment_description}</td>
-                                <td>{assignment.assignment_notes}</td>
+                                <td>{assignment.assignment_notes}</td> */}
                                 {/* <td><button className="btn btn-outline-light btn-lg" type="button" onClick={() => handleChange(assignment.id)}>Add Assignment</button></td> */}
-
                             </tr>              
                         </tbody>
                     )
-                })}
+                {/* })} */}
             </table>
         </div>
     );
