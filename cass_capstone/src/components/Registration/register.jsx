@@ -13,18 +13,28 @@ class Register extends Component {
             phone_number:"",
             address:"",
             zipcode:"",
-            is_staff:"",
-            is_parent:"",
-            is_teacher:"",
-            hasError: false
+            is_staff:false,
+            is_parent:false,
+            is_teacher: false,
+            is_superuser:false,
+            room_number:"Office",
          };
     }
 
     handleChange = (event) => {
         this.setState({
-            [event.target.name]: event.target.value,
+          [event.target.name]: event.target.value,
         })
     }
+    handleCheckbox1Change = event =>
+    this.setState({is_parent: !event.target.is_parent
+                  })
+    handleCheckbox2Change = event =>
+    this.setState({is_teacher: !event.target.teacher
+                  })
+    handleCheckbox3Change = event =>
+    this.setState({is_staff: !event.target.is_staff
+                  })
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -38,8 +48,10 @@ class Register extends Component {
             address: this.state.address,
             zipcode: this.state.zipcode,
             is_staff: this.state.is_staff,
-            is_parent: this.state.is_staff,
+            is_parent: this.state.is_parent,
             is_teacher: this.state.is_teacher,
+            room_number: this.state.room_number,
+            is_superuser: this.state.is_superuser
         };
         this.props.registerNewUser(user);
         this.setState({
@@ -54,6 +66,8 @@ class Register extends Component {
             is_staff:"",
             is_parent:"",
             is_teacher:"",
+            is_superuser:"",
+            room_number:"Office"
         });
     }
 
@@ -70,50 +84,149 @@ class Register extends Component {
                 </div>
 
                 <div className="form-outline form-white mb-2">
-                  <input type="text" name = "first_name" id="typeFirstNameX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.first_name}/>
-                  <label className="form-label fs-6 fw-bold" htmlFor="typeFirstNameX" value="First Name"/>
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "first_name" 
+                      id="typeFirstNameX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.first_name}
+                      placeholder='First Name'
+                    />
+                  </label>
+                </div>
+                <div className="form-outline form-white mb-2">
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "last_name" 
+                      id="typeLastNameX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.last_name}
+                      placeholder='Last Name'
+                    />
+                  </label>
+                </div>
+                <div className="form-outline form-white mb-2">
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "username" 
+                      id="typeUserNameX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.username}
+                      placeholder='Username'
+                    />
+                  </label>
+                </div>
+                <div className="form-outline form-white mb-2">
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "password" 
+                      minLength="8" 
+                      id="typePasswordX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.password}
+                      placeholder='Password'
+                    />
+                  </label>
+                </div>
+                <div className="form-outline form-white mb-2">           
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "email" 
+                      id="typeEmailX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.email}
+                      placeholder='Email'
+                    />
+                  </label>
+                </div>
+                <div className="form-outline form-white mb-2">
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "phone_number" 
+                      id="typePhonenumberX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.phone_number}
+                      placeholder='Phone Number'
+                    />
+                  </label>
+                </div>
+                <div className="form-outline form-white mb-2">            
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "address" 
+                      id="typeAddressX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.address}
+                      placeholder='Address'
+                    />
+                  </label>
+                </div>
+                <div className="form-outline form-white mb-2">
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "zipcode" 
+                      minLength="5"
+                      maxLength="5" 
+                      id="typeZipcodeX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.zipcode}
+                      placeholder='Zipcode'
+                    />
+                  </label>
                 </div>
 
-                <div className="form-outline form-white mb-2">
-                  <input type="text" name = "last_name" id="typeLastNameX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.last_name}/>
-                  <label className="form-label fs-6 fw-bold" htmlFor="typeLastNameX" value="Last Name"/>
-                </div>
-                <div className="form-outline form-white mb-2">
-                  <input type="text" name = "username" id="typeUserNameX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.username}/>
-                  <label className="form-label fs-6 fw-bold" htmlFor="typeUserNameX" value="UserName"/>
-                </div>
-                <div className="form-outline form-white mb-2">
-                  <input type="text" name = "password" minLength="8" id="typePasswordX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.password}/>
-                  <label className="form-label fs-6 fw-bold" htmlFor="typePasswordX" value="Password"/>
-                </div>
-                <div className="form-outline form-white mb-2">
-                  <input type="text" name = "email" id="typeEmailX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.email}/>
-                  <label className="form-label fs-6 fw-bold" htmlFor="typeEmailX" value="Email"/>
-                </div>
-                <div className="form-outline form-white mb-4">
-                  <input type="text" name = "phone_number" id="typePhonenumberX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.phone_number}/>
-                  <label className="form-label fs-6 fw-bold" htmlFor="typePhonenumberX" value="Phone Number"/>
-                </div>
-                <div className="form-outline form-white mb-2">
-                  <input type="text" name = "address" id="typeAddressX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.address}/>
-                  <label className="form-label fs-6 fw-bold" htmlFor="typeAdressX" value="Address"/>
-                </div>
-                <div className="form-outline form-white mb-4">
-                  <input type="text" name = "zipcode" minLength="5" id="typeZipcodeX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.zipcode}/>
-                  <label className="form-label fs-6 fw-bold" htmlFor="typeZipcodeX" value="Zipcode"/>
-                </div>
                 <div className="form-check">
-                    <input className="form-check-input" type="checkbox" id="guardian" onChange={this.handleChange} value={this.state.is_parent}> </input>
-                    <label className="form-check-label" htmlFor="guardian" value="Parent/Guardian"/>
+                  <label  className="form-check-label"> Parent/Guaridan 
+                    <input 
+                      className="form-check-input" 
+                      type="checkbox" 
+                      id="guardian"
+                      defaultChecked={this.state.is_parent}
+                      onChange={this.handleCheckbox1Change}
+                    /> 
+                  </label>
                 </div>
-                <div class="form-check">
-                    <input className="form-check-input" type="checkbox" id="teacher" onChange={this.handleChange} value={this.state.is_staff}> </input> 
-                    <label className="form-check-label" htmlFor="teacher" value="Staff"/>    
+
+                <div className="form-check">
+                  <label className="form-check-label"> Staff  
+                    <input 
+                      className="form-check-input" 
+                      type="checkbox" 
+                      id="teacher" 
+                      defaultChecked={this.state.is_staff}
+                      onChange={this.handleCheckbox3Change}
+                    /> 
+                  </label> 
                 </div>
-                <div class="form-check">
-                    <input className="form-check-input" type="checkbox" id="staff" onChange={this.handleChange} value={this.state.is_teacher}> </input> 
-                    <label className="form-check-label" htmlFor="staff" value="Teacher"/>  
-                </div>  
+
+                <div className="form-check">
+                  <label className="form-check-label"> Teacher  
+                    <input 
+                      className="form-check-input" 
+                      type="checkbox" 
+                      id="staff" 
+                      defaultChecked={this.state.is_teacher}
+                      onChange={this.handleCheckbox2Change} 
+                    /> 
+                  </label> 
+                </div>
+
                 <div className="card-footer">
                     <button className="btn btn-outline-light btn-lg" type="submit"> Register </button>
                 </div>

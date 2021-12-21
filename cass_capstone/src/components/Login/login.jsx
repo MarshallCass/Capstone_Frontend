@@ -49,12 +49,12 @@ class Login extends Component {
 
                   <div className="form-outline form-white mb-4">
                     <input type="text" name="username" id="typeUsernameX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.username}/>
-                    <label className="form-label fs-5 fw-bold" htmlFor="typeUsernameX" value="Username"/>
+                    <label className="form-label fs-5 fw-bold" value="Username"/>
                   </div>
 
                   <div className="form-outline form-white mb-4">
                     <input type="current-password" name="password" id="typePasswordX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.password}/>
-                    <label className="form-label fs-5 fw-bold" htmlFor="typePasswordX" value="Password"/>
+                    <label className="form-label fs-5 fw-bold" value="Password"/>
                   </div>
                   <div className="card-footer">
                   <div>

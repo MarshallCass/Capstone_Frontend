@@ -2,6 +2,7 @@ import React from "react";
 // import axios from "axios";
 import "./grades.css";
 // import jwtDecode from "jwt-decode";
+import { Link } from "react-router-dom";
 
 const DisplayGrades = (props) => {
 
@@ -17,6 +18,12 @@ const DisplayGrades = (props) => {
 
     return (
         <div>
+        <div className="newgrades">
+            <Link to="/grades_input">
+            <button className="btn btn-outline-light btn-lg" type="button">Add Grades</button>
+            </Link>
+        </div>
+             
             <table className="table-container">
                 <thead>
                     <tr>

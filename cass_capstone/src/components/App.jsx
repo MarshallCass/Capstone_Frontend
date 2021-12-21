@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Login from './Login/login';
 import Register from './Registration/register';
 import NavBar from './NavBar/navbar.jsx';
-// import Home from './Profile/profile';
+import Home from './Profile/profile';
 import DisplayAssignments from './Assignments/assignments'
 import DisplayCohorts from './Cohort/cohort';
 import DisplayGrades from './Grades/grades'
@@ -28,9 +28,10 @@ class App extends Component {
     componentDidMount() {
 
         const jwt = localStorage.getItem('token');
+        this.loggedInUser()
         // this.getAllstudents()
         // this.getAllgrades()
-        // this.getAllassignments()
+        this.getAllassignments()
         // this.getAllCohorts()
         try {
             const user = jwtDecode(jwt);
@@ -45,9 +46,24 @@ class App extends Component {
     registerNewUser = async (user) => {
         console.log("User object from Register: ", user)
         try {
-            const response = await axios.post('https://localhost:44394/api/authentication', user);
+            const response = await axios.post('http://127.0.0.1:8000/api/auth/register/', user);
             console.log(response)
-            this.loggedInUser = ({ 'userName': user.username, 'password': user.password })
+            this.loggedInUser = ({ 
+                'userName': user.username, 
+                'password': user.password, 
+                'email': user.email, 
+                'firstname': user.first_name, 
+                'lastname': user.last_name, 
+                'address': user.address, 
+                'zipcode': user.zipcode, 
+                'phone_number': user.phone_number,
+                'is_parent': user.is_parent, 
+                'is_staff': user.is_staff, 
+                'is_teacher': user.is_teacher,
+                'is_superuser': user.is_superuser,
+                'room_number' : user.room_number
+            })
+            
             window.location = ('/Login')
 
         }
@@ -61,7 +77,7 @@ class App extends Component {
     loginUser = async (login) => {
         console.log("User object from login:", login)
         try {
-            let response = await axios.post('https://localhost:44394/api/authentication/login', login);
+            let response = await axios.post('http://127.0.0.1:8000/api/auth/login/', login);
             this.setState({
                 user: response.data.token
             });
@@ -78,16 +94,23 @@ class App extends Component {
 
     }
 
-    getAllStudent = async () => {
-        let response = await axios.get('https://localhost:44394/api/Student/')
+    getAllStudents = async () => {
+        let response = await axios.get('http://127.0.0.1:8000/students/students/')
         this.setState({
-            products: response.data
+            students: response.data
         });
+    
+    }
+    loggedInUser = async () => {
+        let response = await axios.get('http://127.0.0.1:8000/api/auth/user/')
+        this.setState({
+            user: response.data
+        })
     }
 
     addNewStudent = async (student) => {
         try {
-            const response = await axios.post('https://localhost:44394/api/Student', student);
+            const response = await axios.post('http://127.0.0.1:8000/students/students/', student);
             console.log(response)
             this.student = ({ 'First Name': student.first_name, 'Last Name': student.last_name, 'Address': student.address, 'Zipcode': student.zipcode })
             this.setState({
@@ -100,7 +123,7 @@ class App extends Component {
     }
     addNewCohort = async (cohort) => {
         try {
-            const response = await axios.post('https://localhost:44394/api/Cohort', cohort);
+            const response = await axios.post('http://127.0.0.1:8000/cohorts/cohorts/', cohort);
             console.log(response)
             this.cohort = ({ 'Cohort Name': cohort.cohort_name, 'Student': cohort.student.id })
             this.setState({
@@ -110,6 +133,14 @@ class App extends Component {
         catch (error) {
             console.log(error, 'Invalid input');
         }
+    }
+    
+    getAllAssignments = async () => {
+        let response = await axios.get('http://127.0.0.1:8000/assignments/assignments/')
+        this.setState({
+            assignments: response.data
+        });
+    
     }
     searchStudents = (results) => {
         this.setState({
@@ -148,10 +179,10 @@ class App extends Component {
                     />
                     <Route path='/Login' render={props => <Login {...props} loginUser={this.loginUser} />} />
                     <Route path='/Register' render={props => <Register {...props} registerNewUser={this.registerNewUser} />} />
-                    <Route path='/Profile' />
+                    <Route path='/Profile' render={props => <Home {...props} profile={this.loggedInUser}/>} />
                     <Route path='/Cohort' render={props => <DisplayCohorts {...props} cohorts={this.state.cohorts} />} />
                     <Route path='/Grades' render={props => <DisplayGrades {...props} grades={this.state.grades} />} />
-                    <Route path='/Assignments' render={props => <DisplayAssignments {...props} assignments={this.state.assignments} />} />
+                    <Route path='/Assignments' render={props => <DisplayAssignments {...props} assignments={this.getAllAssignments} />} />
                 </Switch>
             </div>
         )

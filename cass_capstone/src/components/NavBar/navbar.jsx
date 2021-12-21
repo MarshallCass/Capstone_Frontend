@@ -19,7 +19,7 @@ const NavBar = ({ user }) => {
                     <Link to="/Cohort"> <li>Cohorts</li> </Link>
                     <Link to="/Assignments"> <li>Assignments</li> </Link>
                     <Link to="/Grades"> <li>Grades</li> </Link>
-                    <Link onClick={() => logoutUser()}> <li> Logout </li></Link>
+                    {/* <Link onClick={() => logoutUser()}> <li> Logout </li></Link> */}
                 </React.Fragment>
 
                 {!user &&
