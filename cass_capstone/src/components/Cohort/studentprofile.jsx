@@ -2,11 +2,11 @@ import React from "react";
 import "./profile.css";
 import { Link } from "react-router-dom";
 
-const Home = (props) => {
+const StudentProfile = (props) => {
 
-// Need to add student if any and students teacher
-
-
+    //
+    // Need to map and render Guardian Information
+    //
     return (
                  
 <div className="container">
@@ -19,26 +19,24 @@ const Home = (props) => {
                 <div>
                 <thead>
                     <tr>
-                        <th> Username </th>
                         <th> First Name </th>
                         <th> Last Name </th>
-                        <th> Email </th>
-                        <th> Phone_Number </th>
                         <th> Address </th>
                         <th> Zipcode </th>
+                        <th> Guardian One </th>
+                        <th> Guardian Two </th>
                     </tr>
                 </thead>
                     <tbody>
-                        {/* {props.users.map((user) => { 
+                        {/* {props.students.map((student) => { 
                             return( 
                             <tr>                        
-                                <td>{user.username}</td>
-                                <td>{user.first_name}</td>
-                                <td>{user.last_name}</td>
-                                <td>{user.email}</td>
-                                <td>{user.phone_number}</td>
-                                <td>{user.address}</td>
-                                <td>{user.zipcode}</td>
+                                <td>{student.first_name}</td>
+                                <td>{student.last_name}</td>
+                                <td>{student.address}</td>
+                                <td>{student.zipcode}</td>
+                                <td>{student.guardian_one}</td>
+                                <td>{student.guardian_two}</td>
                             </tr>
                             )
                         })} */}
@@ -56,4 +54,4 @@ const Home = (props) => {
     );
 };
 
-export default Home;
+export default StudentProfile;

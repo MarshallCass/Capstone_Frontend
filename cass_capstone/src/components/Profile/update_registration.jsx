@@ -75,7 +75,7 @@ class UpdateRegister extends Component {
         return (
           
 <div className="container">
-   <form onSubmit={this.handleSubmit} className="form-signup">
+   <form onSubmit={this.handleSubmit} className="form-update">
         <div className="row">
             <div className="col">
                 <div>
