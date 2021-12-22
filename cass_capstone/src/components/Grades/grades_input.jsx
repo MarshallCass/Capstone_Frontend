@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './grades.css';
 
-class GradesInput extends Component {
+class NewGrade extends Component {
     constructor(props) {
         super(props)
         this.state = {
           student: "",
-          grade: "",
           assignment: "",
-          comments: "",
+          grade:"",
+          comments:"",
 
         };
     }
@@ -21,13 +21,13 @@ class GradesInput extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const grades_input = {
+        const grade = {
             student: this.state.student,
             grade: this.state.grade,
-            assignement: this.state.assignemnt,
+            assignement: this.state.assignment,
             comments: this.state.comments
         };
-        this.props.grades_input(login);
+        this.props.new_grade(grade);
         this.setState({
             student: "",
             grade: "",
@@ -53,59 +53,61 @@ class GradesInput extends Component {
    <form className="add_grade">
             <div className="col">
             <div>
-        <button onClick={this.showMenu}>
-          Student
-        </button>
-        {
-          this.state.showMenu
-            ? (
-              <div className="menu">
-                <button> Menu item 1 </button>
-                <button> Menu item 2 </button>
-                <button> Menu item 3 </button>
-              </div>
-            )
-            : (
-              null
-            )
-        }
-        <button onClick={this.showMenu}>
-          Assignment
-        </button>
-        {
-          this.state.showMenu
-            ? (
-              <div className="menu">
-                <button> Menu item 1 </button>
-                <button> Menu item 2 </button>
-                <button> Menu item 3 </button>
-              </div>
-            )
-            : (
-              null
-            )
-        }
-        <button onClick={this.showMenu}>
-          Grade
-        </button>
-        {
-          this.state.showMenu
-            ? (
-              <div className="menu">
-                <button> Menu item 1 </button>
-                <button> Menu item 2 </button>
-                <button> Menu item 3 </button>
-              </div>
-            )
-            : (
-              null
-            )
-        }
-        <div className="form-outline form-white mb-4">
-                    <input type="text" name="username" id="typeUsernameX" className="form-control form-control-lg"/>
-                    <label className="form-label fs-5 fw-bold" value="Username" placeholder="Comments"/>
-                  </div>
-      </div>
+                  <h1 className="fs-1 fw-bold mb-5 text-uppercase">Register</h1>
+                  <p className="fs-5 text-white-50 mb-4">Please enter registration information!</p>
+                </div>
+                <div className="form-outline form-white mb-2">
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "student" 
+                      id="typeStudentX"
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.student}
+                      placeholder='Student'
+                    />
+                  </label>
+                </div>
+                <div className="form-outline form-white mb-2">
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "assignment" 
+                      id="typeAssignmentX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.assignment}
+                      placeholder='Assignment'
+                    />
+                  </label>
+                </div>
+                <div className="form-outline form-white mb-2">
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "username" 
+                      id="typeGradeX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.grade}
+                      placeholder='Grade'
+                    />
+                  </label>
+                </div>
+                <div className="form-outline form-white mb-2">
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "comments" 
+                      id="typeCommentsX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.comments}
+                      placeholder='Comments'
+                    />
+                  </label>
+                </div>
                 <div className="card-footer">
                     <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>
                 </div>
@@ -118,4 +120,4 @@ class GradesInput extends Component {
 }
 }
 
-export default GradesInput;
+export default NewGrade;

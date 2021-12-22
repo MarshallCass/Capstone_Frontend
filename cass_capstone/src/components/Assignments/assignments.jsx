@@ -1,13 +1,18 @@
 import React from "react";
 import "./assignments.css";
+import { Link } from "react-router-dom";
 
 const DisplayAssignments = (props) => {
 
 
 
-
     return (
         <div>
+        <div className="newassignment">
+            <Link to="/assignments_input">
+            <button className="btn btn-outline-light btn-lg" type="button">New Assignment</button>
+            </Link>
+        </div>
             <table className="table-container">
                 <thead>
                     <tr>
@@ -17,7 +22,7 @@ const DisplayAssignments = (props) => {
                         <th> Notes </th>
                     </tr>
                 </thead>
-                {props.assignements.map((assignment) => {
+                {props.assignments.map((assignment) => {
                     return (
                         <tbody>
                             <tr>                        

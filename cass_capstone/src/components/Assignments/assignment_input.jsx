@@ -7,9 +7,10 @@ class NewAssignment extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: "",
-            password: "",
-
+            student: "",
+            assignment: "",
+            grade:"",
+            comments:"",
         };
     }
 
@@ -21,14 +22,18 @@ class NewAssignment extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const login = {
-            username: this.state.username,
-            password: this.state.password,
+        const assignment = {
+            student: this.state.student,
+            assignment: this.state.assignment,
+            grade: this.state.grade,
+            comments: this.state.comments,
         };
-        this.props.loginUser(login);
+        this.props.new_assignment(assignment);
         this.setState({
-            username: "",
-            password: "",
+            student: "",
+            assignment: "",
+            grade:"",
+            comments:"",
         });
         
     }
@@ -37,26 +42,68 @@ class NewAssignment extends Component {
         return (
           
 <div className="container">
-    <form onSubmit={this.handleSubmit} className="form-signin">
+    <form onSubmit={this.handleSubmit} className="form-newassignment">
         <div className="row">
             <div className="col">
                 <div>
-                <h1 className="fs-1 fw-bold mb-5 text-uppercase">Login</h1>
+                  <h1 className="fs-1 fw-bold mb-5 text-uppercase">Register</h1>
+                  <p className="fs-5 text-white-50 mb-4">Please enter registration information!</p>
                 </div>
-                  <p className="fs-5 text-white-50 mb-4">Please enter your username and password!</p>
-
-                  <div className="form-outline form-white mb-4">
-                    <input type="text" name="username" id="typeUsernameX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.username}/>
-                    <label className="form-label fs-5 fw-bold" value="Username"/>
-                  </div>
-
-                  <div className="form-outline form-white mb-4">
-                    <input type="current-password" name="password" id="typePasswordX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.password}/>
-                    <label className="form-label fs-5 fw-bold" value="Password"/>
-                  </div>
-                  <div className="card-footer">
-              
-                  </div>
+                <div className="form-outline form-white mb-2">
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "student" 
+                      id="typeStudentX"
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.student}
+                      placeholder='Student'
+                    />
+                  </label>
+                </div>
+                <div className="form-outline form-white mb-2">
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "assignment" 
+                      id="typeAssignmentX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.assignment}
+                      placeholder='Assignment'
+                    />
+                  </label>
+                </div>
+                <div className="form-outline form-white mb-2">
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "username" 
+                      id="typeGradeX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.grade}
+                      placeholder='Grade'
+                    />
+                  </label>
+                </div>
+                <div className="form-outline form-white mb-2">
+                  <label className="form-label fs-6 fw-bold">
+                    <input 
+                      type="text" 
+                      name = "comments" 
+                      id="typeCommentsX" 
+                      className="form-control form-control-lg" 
+                      onChange={this.handleChange} 
+                      value={this.state.password}
+                      placeholder='Comments'
+                    />
+                  </label>
+                </div>
+                <div className="card-footer">
+                    <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>
+                </div>
             </div>    
         </div>          
     </form>

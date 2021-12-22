@@ -5,9 +5,12 @@ import Login from './Login/login';
 import Register from './Registration/register';
 import NavBar from './NavBar/navbar.jsx';
 import Home from './Profile/profile';
-import DisplayAssignments from './Assignments/assignments'
+import DisplayAssignments from './Assignments/assignments';
+import NewAssignment from './Assignments/assignment_input';
 import DisplayCohorts from './Cohort/cohort';
-import DisplayGrades from './Grades/grades'
+import NewCohort from './Cohort/cohort_input';
+import DisplayGrades from './Grades/grades';
+import NewGrade from './Grades/grades_input';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 
@@ -28,10 +31,10 @@ class App extends Component {
     componentDidMount() {
 
         const jwt = localStorage.getItem('token');
-        this.loggedInUser()
+        // this.loggedInUser()
         // this.getAllstudents()
         // this.getAllgrades()
-        this.getAllassignments()
+        // this.getAllassignments()
         // this.getAllCohorts()
         try {
             const user = jwtDecode(jwt);
@@ -93,6 +96,12 @@ class App extends Component {
         }
 
     }
+    // getCurrentUser = async () => {
+    //     let response = await axios.get('http://127.0.0.1:8000/api/auth/user/')
+    //     this.setState({
+    //         user: response.data
+    //     })
+    // }
 
     getAllStudents = async () => {
         let response = await axios.get('http://127.0.0.1:8000/students/students/')
@@ -101,18 +110,24 @@ class App extends Component {
         });
     
     }
-    loggedInUser = async () => {
-        let response = await axios.get('http://127.0.0.1:8000/api/auth/user/')
+
+    getAllAssignments = async () => {
+        let response = await axios.get('http://127.0.0.1:8000/assignments/assignments/')
+        console.log(response)
         this.setState({
-            user: response.data
-        })
+            assignments: response.data
+        });
     }
 
     addNewStudent = async (student) => {
         try {
             const response = await axios.post('http://127.0.0.1:8000/students/students/', student);
             console.log(response)
-            this.student = ({ 'First Name': student.first_name, 'Last Name': student.last_name, 'Address': student.address, 'Zipcode': student.zipcode })
+            this.student = ({ 'First Name': student.first_name, 
+                            'Last Name': student.last_name, 
+                            'Address': student.address, 
+                            'Zipcode': student.zipcode 
+                            })
             this.setState({
                 students: response.data
             });
@@ -121,44 +136,61 @@ class App extends Component {
             console.log(error, 'Invalid input');
         }
     }
-    addNewCohort = async (cohort) => {
-        try {
-            const response = await axios.post('http://127.0.0.1:8000/cohorts/cohorts/', cohort);
-            console.log(response)
-            this.cohort = ({ 'Cohort Name': cohort.cohort_name, 'Student': cohort.student.id })
-            this.setState({
-                cohort: response.data
-            });
-        }
-        catch (error) {
-            console.log(error, 'Invalid input');
-        }
-    }
-    
-    getAllAssignments = async () => {
-        let response = await axios.get('http://127.0.0.1:8000/assignments/assignments/')
-        this.setState({
-            assignments: response.data
-        });
-    
-    }
-    searchStudents = (results) => {
-        this.setState({
-            students: results
-        })
-    }
-    searchAssignments = (results) => {
-        this.setState({
-            assignments: results
-        })
-    }
-    searchCohorts = (results) => {
-        this.setState({
-            cohorts: results
-        })
-    }
 
+    // addNewCohort = async (cohort) => {
+    //     try {
+    //         const response = await axios.post('http://127.0.0.1:8000/cohorts/cohorts/', cohort);
+    //         console.log(response)
+    //         this.new_cohort = ({ 'Cohort Name': cohort.cohort_name, 'Student': cohort.student.id })
+    //         this.setState({
+    //             new_cohort: response.data
+    //         });
+    //     }
+    //     catch (error) {
+    //         console.log(error, 'Invalid input');
+    //     }
+    // }
 
+    // addNewAssignment = async (assignment) => {
+    //     try {
+    //         const response = await axios.post('http://127.0.0.1:8000/assignments/assignments/', assignment);
+    //         console.log(response)
+    //         this.new_assignment = ({ 'Assignment Subject': assignment.assignment_subject, 
+    //                                  'Assignment Name': assignment.assignment_name,
+    //                                  'Assignment Description' : assignment.assignment_description,  
+    //                                  'Assignment Notes' : assignment.assignment_notes
+    //                                })
+    //         this.setState({
+    //             new_assignment: response.data
+    //         });
+    //     }
+    //     catch (error) {
+    //         console.log(error, 'Invalid input');
+    //     }
+    // }
+
+    
+    // addNewGrade = async (grade) => {
+    //     try {
+    //         const response = await axios.post('http://127.0.0.1:8000/grades/grades/', grades);
+    //         console.log(response)
+    //         this.new_grade = ({ 'Student': grade.student, 
+    //                           'Assignment': grade.assignment,
+    //                           'Grade' : grade.grade,  
+    //                            'Comments' : grade.comments
+    //                            })
+    //         this.setState({
+    //             new_grade: response.data
+    //         });
+    //     }
+    //     catch (error) {
+    //         console.log(error, 'Invalid input');
+    //     }
+    // }
+
+    
+    
+ 
 
     render() {
         const user = this.state.loggedInUser
@@ -179,10 +211,14 @@ class App extends Component {
                     />
                     <Route path='/Login' render={props => <Login {...props} loginUser={this.loginUser} />} />
                     <Route path='/Register' render={props => <Register {...props} registerNewUser={this.registerNewUser} />} />
-                    <Route path='/Profile' render={props => <Home {...props} profile={this.loggedInUser}/>} />
+                    {/* <Route path='/Profile' render={props => <Home {...props} profile={this.getCurrentUser}/>} /> */}
                     <Route path='/Cohort' render={props => <DisplayCohorts {...props} cohorts={this.state.cohorts} />} />
                     <Route path='/Grades' render={props => <DisplayGrades {...props} grades={this.state.grades} />} />
-                    <Route path='/Assignments' render={props => <DisplayAssignments {...props} assignments={this.getAllAssignments} />} />
+                    <Route path='/Assignments' render={props => <DisplayAssignments {...props} assignments={this.state.assignments} />} />
+                    <Route path='/NewAssignment' render={props => <NewAssignment {...props} new_assignment={this.state.new_assignment} />} />
+                    <Route path='/NewGrade' render={props => <NewGrade {...props} new_grade={this.state.new_grade} />} />
+                    <Route path='/NewCohort' render={props => <NewCohort {...props} new_cohort={this.state.new_cohort} />} />
+
                 </Switch>
             </div>
         )

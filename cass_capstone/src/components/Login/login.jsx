@@ -48,7 +48,13 @@ class Login extends Component {
                   <p className="fs-5 text-white-50 mb-4">Please enter your username and password!</p>
 
                   <div className="form-outline form-white mb-4">
-                    <input type="text" name="username" id="typeUsernameX" className="form-control form-control-lg" onChange={this.handleChange} value={this.state.username}/>
+                    <input type="text" 
+                           name="username" 
+                           id="typeUsernameX" 
+                           className="form-control form-control-lg" 
+                           onChange={this.handleChange} 
+                           value={this.state.username}
+                    />
                     <label className="form-label fs-5 fw-bold" value="Username"/>
                   </div>
 

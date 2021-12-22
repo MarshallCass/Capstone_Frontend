@@ -2,16 +2,20 @@ import React from "react";
 // import axios from "axios";
 import "./cohort.css";
 // import jwtDecode from "jwt-decode";
+import { Link } from "react-router-dom";
 
 const DisplayCohorts = (props) => {
 
 
 
- 
-
 
     return (
         <div>
+        <div className="newcohort">
+            <Link to="/cohort_input">
+            <button className="btn btn-outline-light btn-lg" type="button">New Cohort</button>
+            </Link>
+        </div>
             <table className="table-container">
                 <thead>
                     <tr>
