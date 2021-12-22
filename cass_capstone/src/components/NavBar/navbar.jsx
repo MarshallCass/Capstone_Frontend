@@ -2,7 +2,8 @@ import React from 'react';
 import './navbar.css';
 import { Link } from 'react-router-dom';
 
-const NavBar = ({ user }) => {
+const NavBar = (user) => {
+   
 
     const logoutUser = () => {
         localStorage.removeItem('token');
@@ -12,16 +13,16 @@ const NavBar = ({ user }) => {
     return (
         <nav>
 
-            {user && <h4> Welcome {user.username} </h4>}
+            {user && <h4>{user.first_name}</h4>}
             <ul>
                 <React.Fragment>
-                    <Link to="/Profile"> <li>Home</li> </Link>
+                    <Link to="/Home"> <li>Home</li> </Link>
                     <Link to="/Cohort"> <li>Cohorts</li> </Link>
                     <Link to="/Assignments"> <li>Assignments</li> </Link>
                     <Link to="/Grades"> <li>Grades</li> </Link>
                     {/* <Link onClick={() => logoutUser()}> <li> Logout </li></Link> */}
                 </React.Fragment>
-
+            
                 {!user &&
                     <React.Fragment>
                         <Link to="/Login"> <li>Login</li> </Link>

@@ -33,18 +33,18 @@ const DisplayGrades = (props) => {
                         <th> Comments </th>
                     </tr>
                 </thead>
-                {props.grades.map((grade) => {   
-                    return (
-                        <tbody>
+                    <tbody>
+                        {props.grades.map((grade) => {
+                            return(   
                             <tr>                        
                                 <td>{grade.student_id}</td>
                                 <td>{grade.grade}</td>
                                 <td>{grade.assignment}</td>
                                 <td>{grade.comments}</td>
-                            </tr>              
-                        </tbody>
-                    )
-                })}
+                            </tr>
+                            )              
+                        })}
+                    </tbody>
             </table>
         </div>
     );

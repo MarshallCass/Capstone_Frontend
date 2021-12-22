@@ -23,17 +23,16 @@ const DisplayCohorts = (props) => {
                         <th> Student </th>
                     </tr>
                 </thead>
-                {props.cohorts.map((cohort) => {   
-                    return (
-                        <tbody>
+                    <tbody>
+                        {props.cohorts.map((cohort) => { 
+                            return(  
                             <tr>                        
                                 <td>{cohort.name}</td>
                                 <td>{cohort.student_id}</td>
-
-                            </tr>              
-                        </tbody>
-                    )
-                })}
+                            </tr>
+                            )              
+                        })}
+                    </tbody>
             </table>
         </div>
     );

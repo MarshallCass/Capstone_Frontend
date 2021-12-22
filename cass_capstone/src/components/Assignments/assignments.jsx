@@ -2,9 +2,11 @@ import React from "react";
 import "./assignments.css";
 import { Link } from "react-router-dom";
 
+
 const DisplayAssignments = (props) => {
 
-
+        
+   
 
     return (
         <div>
@@ -22,18 +24,18 @@ const DisplayAssignments = (props) => {
                         <th> Notes </th>
                     </tr>
                 </thead>
-                {props.assignments.map((assignment) => {
-                    return (
-                        <tbody>
+                    <tbody>
+                        {props.assignments.map((assignment) => {
+                            return(
                             <tr>                        
                                 <td>{assignment.assignment_subject}</td>
                                 <td>{assignment.assignment_name}</td>
                                 <td>{assignment.assignment_description}</td>
                                 <td>{assignment.assignment_notes}</td>
-                            </tr>              
-                        </tbody>
-                    )
-                })}
+                            </tr>  
+                            ) 
+                        })}
+                    </tbody>                 
             </table>
         </div>
     );
