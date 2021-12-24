@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'react-router-dom';
-import './cohort.css';
+import '../Registration/register.css';
 
 
 class NewCohort extends Component {

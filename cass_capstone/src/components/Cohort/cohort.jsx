@@ -1,18 +1,16 @@
 import React from "react";
-// import axios from "axios";
 import "./cohort.css";
-// import jwtDecode from "jwt-decode";
 import { Link } from "react-router-dom";
 
 const DisplayCohorts = (props) => {
 
-
+// Need Button beside student to link to student profile
 
 
     return (
         <div>
         <div className="newcohort">
-            <Link to="/cohort_input">
+            <Link to="/NewCohort">
             <button className="btn btn-outline-light btn-lg" type="button">New Cohort</button>
             </Link>
         </div>
@@ -23,16 +21,16 @@ const DisplayCohorts = (props) => {
                         <th> Student </th>
                     </tr>
                 </thead>
-                    <tbody>
-                        {props.cohorts.map((cohort) => { 
+                <tbody>
+                        {props.cohorts.map((cohort, index) => { 
                             return(  
-                            <tr>                        
-                                <td>{cohort.name}</td>
-                                <td>{cohort.student_id}</td>
+                            <tr key={index}>                        
+                                <td>{cohort.cohort_name}</td>
+                                <td>{cohort.student}</td>
                             </tr>
                             )              
                         })}
-                    </tbody>
+                </tbody>
             </table>
         </div>
     );

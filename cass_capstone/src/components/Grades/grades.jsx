@@ -19,7 +19,7 @@ const DisplayGrades = (props) => {
     return (
         <div>
         <div className="newgrades">
-            <Link to="/grades_input">
+            <Link to="/NewGrade">
             <button className="btn btn-outline-light btn-lg" type="button">Add Grades</button>
             </Link>
         </div>
@@ -33,18 +33,18 @@ const DisplayGrades = (props) => {
                         <th> Comments </th>
                     </tr>
                 </thead>
-                    <tbody>
-                        {props.grades.map((grade) => {
+                <tbody>
+                        {props.grades.map((grade, index) => {
                             return(   
-                            <tr>                        
-                                <td>{grade.student_id}</td>
+                            <tr key={index}>                        
+                                <td>{grade.student}</td>
                                 <td>{grade.grade}</td>
                                 <td>{grade.assignment}</td>
                                 <td>{grade.comments}</td>
                             </tr>
                             )              
                         })}
-                    </tbody>
+                </tbody>
             </table>
         </div>
     );

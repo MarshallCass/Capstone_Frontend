@@ -11,7 +11,7 @@ const DisplayAssignments = (props) => {
     return (
         <div>
         <div className="newassignment">
-            <Link to="/assignments_input">
+            <Link to="/NewAssignment">
             <button className="btn btn-outline-light btn-lg" type="button">New Assignment</button>
             </Link>
         </div>
@@ -24,18 +24,18 @@ const DisplayAssignments = (props) => {
                         <th> Notes </th>
                     </tr>
                 </thead>
-                    <tbody>
-                        {props.assignments.map((assignment) => {
+                <tbody>
+                        {props.assignments.map((assignment, index) => {
                             return(
-                            <tr>                        
+                            <tr key={index}>                        
                                 <td>{assignment.assignment_subject}</td>
                                 <td>{assignment.assignment_name}</td>
                                 <td>{assignment.assignment_description}</td>
                                 <td>{assignment.assignment_notes}</td>
                             </tr>  
                             ) 
-                        })}
-                    </tbody>                 
+                        })}                 
+                </tbody>
             </table>
         </div>
     );

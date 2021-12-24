@@ -1,5 +1,5 @@
 import React from "react";
-import "./profile.css";
+import "../Profile/profile.css";
 import { Link } from "react-router-dom";
 
 const StudentProfile = (props) => {

@@ -46,8 +46,8 @@ class NewAssignment extends Component {
         <div className="row">
             <div className="col">
                 <div>
-                  <h1 className="fs-1 fw-bold mb-5 text-uppercase">Register</h1>
-                  <p className="fs-5 text-white-50 mb-4">Please enter registration information!</p>
+                  <h1 className="fs-1 fw-bold mb-5 text">New Assignment</h1>
+                  <p className="fs-5 text-white-50 mb-4">Please enter assignment information!</p>
                 </div>
                 <div className="form-outline form-white mb-2">
                   <label className="form-label fs-6 fw-bold">

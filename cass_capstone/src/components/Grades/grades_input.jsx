@@ -53,8 +53,8 @@ class NewGrade extends Component {
    <form className="add_grade">
             <div className="col">
             <div>
-                  <h1 className="fs-1 fw-bold mb-5 text-uppercase">Register</h1>
-                  <p className="fs-5 text-white-50 mb-4">Please enter registration information!</p>
+                  <h1 className="fs-1 fw-bold mb-5 text-uppercase">New Grades</h1>
+                  <p className="fs-5 text-white-50 mb-4">Please enter grade information!</p>
                 </div>
                 <div className="form-outline form-white mb-2">
                   <label className="form-label fs-6 fw-bold">
