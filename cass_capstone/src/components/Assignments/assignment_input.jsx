@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import 'react-router-dom';
 import './assignments.css';
 
-
 class NewAssignment extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            student: "",
-            assignment: "",
-            grade:"",
-            comments:"",
+            assignment_subject: "",
+            assignment_name: "",
+            assignment_description:"",
+            assignment_notes:"", 
         };
     }
 
@@ -23,22 +22,22 @@ class NewAssignment extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const assignment = {
-            student: this.state.student,
-            assignment: this.state.assignment,
-            grade: this.state.grade,
-            comments: this.state.comments,
+            assignment_name: this.state.assignment_name,
+            assignment_subject: this.state.assignment_subject,
+            assignment_description: this.state.assignment_description,
+            assignment_notes: this.state.assignment_notes,
         };
-        this.props.new_assignment(assignment);
+        this.props.addNewAssignment(assignment);
         this.setState({
-            student: "",
-            assignment: "",
-            grade:"",
-            comments:"",
-        });
-        
+            assignment_subject: "",
+            assignment_name: "",
+            assignment_description:"",
+            assignment_notes:"", 
+        }); 
     }
-
-    render() {
+ 
+    render() {   
+    
         return (
           
 <div className="container">
@@ -51,26 +50,26 @@ class NewAssignment extends Component {
                 </div>
                 <div className="form-outline form-white mb-2">
                   <label className="form-label fs-6 fw-bold">
-                    <input 
-                      type="text" 
-                      name = "student" 
-                      id="typeStudentX"
+                    <input
+                      type="text"
+                      name = "assignment_subject" 
+                      id="typeSubjectX"
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
-                      value={this.state.student}
-                      placeholder='Student'
+                      value={this.state.assignment_subject}
+                      placeholder='Subject'
                     />
-                  </label>
+                 </label>
                 </div>
                 <div className="form-outline form-white mb-2">
                   <label className="form-label fs-6 fw-bold">
                     <input 
                       type="text" 
-                      name = "assignment" 
-                      id="typeAssignmentX" 
+                      name = "assignment_name" 
+                      id="typeNameX" 
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
-                      value={this.state.assignment}
+                      value={this.state.assignment_name}
                       placeholder='Assignment'
                     />
                   </label>
@@ -79,12 +78,12 @@ class NewAssignment extends Component {
                   <label className="form-label fs-6 fw-bold">
                     <input 
                       type="text" 
-                      name = "username" 
-                      id="typeGradeX" 
+                      name = "assignment_description" 
+                      id="typeDescriptionX" 
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
-                      value={this.state.grade}
-                      placeholder='Grade'
+                      value={this.state.assignment_description}
+                      placeholder='Description'
                     />
                   </label>
                 </div>
@@ -92,14 +91,15 @@ class NewAssignment extends Component {
                   <label className="form-label fs-6 fw-bold">
                     <input 
                       type="text" 
-                      name = "comments" 
-                      id="typeCommentsX" 
+                      name = "assignment_notes" 
+                      id="typeNotesX" 
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
-                      value={this.state.password}
-                      placeholder='Comments'
+                      value={this.state.assignment_notes}
+                      placeholder='Notes'
                     />
                   </label>
+                  
                 </div>
                 <div className="card-footer">
                     <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>

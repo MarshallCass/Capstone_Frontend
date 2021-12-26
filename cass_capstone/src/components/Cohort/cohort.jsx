@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const DisplayCohorts = (props) => {
 
 // Need Button beside student to link to student profile
-
+// Button to list all students in cohort
 
     return (
         <div>
@@ -27,6 +27,19 @@ const DisplayCohorts = (props) => {
                             <tr key={index}>                        
                                 <td>{cohort.cohort_name}</td>
                                 <td>{cohort.student}</td>
+                                {/* <td>
+                                <select>
+                                    {props.students.map((student, index) => {
+                                    return(
+                                        <option key={index}                        
+                                            value={student.id}>
+                                            {student.first_name} {student.last_name}
+                                        </option>
+                                       )
+                                    })}
+                                </select>
+                                </td>   */}
+                                <td><button class="btn btn-outline-light btn-lg" type="button" onClick={() => (cohort.id)}>See Cohort</button></td>
                             </tr>
                             )              
                         })}

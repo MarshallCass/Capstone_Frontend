@@ -10,48 +10,41 @@ const Home = (props) => {
     return (
                  
 <div className="container">
-    
-    <div className="row">
-        <div className="col">
-            <div>
-                <h1 className="fs-2 fw-bold mb-5 text">Profile</h1>
-            </div>
-                <table className="form-profile">
-                    <thead>
-                        <tr>
-                            <th> Username </th>
-                            <th> First Name </th>
-                            <th> Last Name </th>
-                            <th> Email </th>
-                            <th> Phone_Number </th>
-                            <th> Address </th>
-                            <th> Zipcode </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {console.log(props.user)}
-                        {props.user.map((user, index) => { 
-                            return( 
-                            <tr key={index}>                        
-                                <td>{user.username}</td>
-                                <td>{user.first_name}</td>
-                                <td>{user.last_name}</td>
-                                <td>{user.email}</td>
-                                <td>{user.phone_number}</td>
-                                <td>{user.address}</td>
-                                <td>{user.zipcode}</td>
-                            </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div className="updateregistration">
+    <form className="form-newCohort">
+        <div className="row">
+            <div className="col">
+                <div>
+                <h1 className="fs-1 fw-bold mb-5 text">User Profile</h1>
+                </div>
+                    <div className="d-grid gap-4">
+                        <label className="fs-5 fw-normal">
+                            Username: {props.user.username}
+                        </label>
+                        <label className="fs-5 fw-normal">
+                            Name: {props.user.first_name} {props.user.last_name}
+                        </label>
+                        <label className="fs-5 ">
+                            Email: {props.user.email}
+                        </label>
+                        <label className="fs-5 fw-normal">
+                            Phone Number: {props.user.phone_number}
+                        </label>
+                        <label className="fs-5 fw-normal">
+                            Address: {props.user.address}
+                        </label>
+                        <label className="fs-5 fw-normal">
+                            Zipcode: {props.user.zipcode}
+                        </label>
+                    </div>
+                    <br></br>
+        <div className="card-footer">
             <Link to="/UpdateRegister">
             <button className="btn btn-outline-light btn-lg" type="button">Update Info</button>
             </Link>
         </div>
+        </div>
+        </div>
+    </form>
 </div>
     );
 };

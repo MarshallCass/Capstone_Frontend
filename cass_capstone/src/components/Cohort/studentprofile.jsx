@@ -28,7 +28,7 @@ const StudentProfile = (props) => {
                     </tr>
                 </thead>
                     <tbody>
-                        {/* {props.students.map((student) => { 
+                        {props.students.map((student) => { 
                             return( 
                             <tr>                        
                                 <td>{student.first_name}</td>
@@ -39,7 +39,7 @@ const StudentProfile = (props) => {
                                 <td>{student.guardian_two}</td>
                             </tr>
                             )
-                        })} */}
+                        })}
                     </tbody>
                 </div>
             </div>

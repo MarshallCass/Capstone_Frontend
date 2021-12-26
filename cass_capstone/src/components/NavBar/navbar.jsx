@@ -7,6 +7,7 @@ const NavBar = (user) => {
 
     const logoutUser = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('refresh');
         window.location = ('/')
     }
 

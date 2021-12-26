@@ -22,10 +22,10 @@ class NewCohort extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const cohort = {
-            cohort_name: this.state.chort_name,
+            cohort_name: this.state.cohort_name,
             student: this.state.student,
         };
-        this.props.new_cohort(cohort);
+        this.props.addNewCohort(cohort);
         this.setState({
             cohort_name: "",
             student: "",
@@ -34,6 +34,7 @@ class NewCohort extends Component {
     }
 
     render() {
+    
         return (
           
 <div className="container">

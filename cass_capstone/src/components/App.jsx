@@ -13,6 +13,7 @@ import NewCohort from './Cohort/cohort_input';
 import DisplayGrades from './Grades/grades';
 import NewGrade from './Grades/grades_input';
 import StudentProfile from './Cohort/studentprofile';
+import StudentDropdown from './Students/student_list';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 
@@ -28,6 +29,7 @@ class App extends Component {
             cohorts: [],
             jwt: "",
             user: [],
+            currentUser: [],
         };
     }
 
@@ -38,9 +40,12 @@ class App extends Component {
         this.getAllGrades()
         this.getAllAssignments()
         this.getAllCohorts()
+        // this.getUserJWT()
+        this.getUserInfo()
         try {
             const user = jwtDecode(jwt);
             this.setState({ loggedInUser: user });
+            console.log("User Info", user)
         } catch (error) {
             console.log(error);
         }
@@ -78,12 +83,11 @@ class App extends Component {
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/auth/login/', login);
             this.setState({
-                jwt: response.data.access
-            });
-            this.setState({
                 user: jwtDecode(response.data.access)
             });
-            console.log(response)
+            this.setState({
+                jwt: response.data.access
+            });
             localStorage.setItem('token', response.data.access);
             localStorage.setItem('refresh', response.data.refresh);
             window.location = ('/Home')
@@ -92,6 +96,15 @@ class App extends Component {
         }
     }
     
+    getUserInfo = async () => {
+        const jwt = localStorage.getItem('token')
+        const response = await axios.get('http://127.0.0.1:8000/api/auth/user/8', {Headers: {Authorization: 'Bearer' + jwt}});
+        console.log('Logged In info', response.data)
+        this.setState({
+            user: response.data
+        });
+    }
+
     getAllGrades = async () => {
         const jwt = localStorage.getItem('token')
         const response = await axios.get('http://127.0.0.1:8000/grades/grades/', {Headers: {Authorization: 'Bearer' + jwt}});
@@ -152,9 +165,9 @@ class App extends Component {
             const jwt = localStorage.getItem('token')
             const response = await axios.post('http://127.0.0.1:8000/cohorts/cohorts/', cohort, {Headers: {Authorization: 'Bearer' + jwt}});
             console.log(response)
-            this.new_cohort = ({ 'Cohort Name': cohort.cohort_name, 'Student': cohort.student.id })
+            this.cohort = ({ 'Cohort Name': cohort.cohort_name, 'Student': cohort.student.id })
             this.setState({
-                new_cohort: response.data
+                cohorts: response.data
             });
         }
         catch (error) {
@@ -167,13 +180,13 @@ class App extends Component {
             const jwt = localStorage.getItem('token')
             const response = await axios.post('http://127.0.0.1:8000/assignments/assignments/', assignment, {Headers: {Authorization: 'Bearer' + jwt}});
             console.log(response)
-            this.new_assignment = ({ 'Assignment Subject': assignment.assignment_subject, 
-                                     'Assignment Name': assignment.assignment_name,
-                                     'Assignment Description' : assignment.assignment_description,  
-                                     'Assignment Notes' : assignment.assignment_notes
+            this.assignment = ({ 'Assignment Subject': assignment.assignment_subject, 
+                                    'Assignment Name': assignment.assignment_name,
+                                    'Assignment Description' : assignment.assignment_description,  
+                                    'Assignment Notes' : assignment.assignment_notes
                                    })
             this.setState({
-                new_assignment: response.data
+               assignments: response.data
             });
         }
         catch (error) {
@@ -246,17 +259,17 @@ class App extends Component {
                     }}
                     />
                     <Route path='/Login' render={props => <Login {...props} loginUser={this.loginUser} />} />
-                    <Route path='/Register' render={props => <Register {...props} registerNewUser={this.registerNewUser} />} />
+                    <Route path='/Register' render={props => <Register {...props} registerNewUser={this.state.registerNewUser} />} />
                     <Route path='/Home' render={props => <Home {...props} user={this.state.user}/>} />
                     <Route path='/Cohorts' render={props => <DisplayCohorts {...props} cohorts={this.state.cohorts} />} />
                     <Route path='/Grades' render={props => <DisplayGrades {...props} grades={this.state.grades} />} />
                     <Route path='/Assignments' render={props => <DisplayAssignments {...props} assignments={this.state.assignments} />} />
-                    <Route path='/NewAssignment' render={props => <NewAssignment {...props} new_assignment={this.state.new_assignment} />} />
+                    <Route path='/NewAssignment' render={props => <NewAssignment {...props} addNewAssignment={this.addNewAssignment}/>} />
                     <Route path='/NewGrade' render={props => <NewGrade {...props} new_grade={this.state.new_grade} />} />
-                    <Route path='/NewCohort' render={props => <NewCohort {...props} new_cohort={this.state.new_cohort} />} />
+                    <Route path='/NewCohort' render={props => <NewCohort {...props} addNewCohort={this.addNewCohort} />} />
                     <Route path='/UpdateRegister' render={props => <UpdateRegister {...props} updateRegister={this.updateRegister} />} />
                     <Route path='/StudentProfile' render={props => <StudentProfile {...props} students={this.state.students} />} />
-
+                    <Route path='/Student_List' render={props => <StudentDropdown {...props} students={this.state.students} /> } />
 
                 </Switch>
             </div>

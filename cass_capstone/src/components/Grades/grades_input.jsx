@@ -9,7 +9,6 @@ class NewGrade extends Component {
           assignment: "",
           grade:"",
           comments:"",
-
         };
     }
 
@@ -47,6 +46,7 @@ class NewGrade extends Component {
   }
 
     render (){
+
     return (
        
 <div className="container">
