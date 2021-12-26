@@ -19,7 +19,7 @@ class SearchBar extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.filterproducts(this.state.searchWord)
+        this.props.filterStudents(this.state.searchWord)
     }
 
     render(){
@@ -43,4 +43,4 @@ class SearchBar extends Component {
     }
 }
 
-export default SearchBar
+export default SearchBar;

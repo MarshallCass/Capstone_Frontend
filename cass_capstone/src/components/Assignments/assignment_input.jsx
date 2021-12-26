@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'react-router-dom';
 import './assignments.css';
+import { Link } from "react-router-dom";
 
 class NewAssignment extends Component {
     constructor(props) {
@@ -102,7 +103,9 @@ class NewAssignment extends Component {
                   
                 </div>
                 <div className="card-footer">
+                  <Link to="/Assignments">
                     <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>
+                  </Link>
                 </div>
             </div>    
         </div>          

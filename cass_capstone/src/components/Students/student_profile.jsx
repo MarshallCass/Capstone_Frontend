@@ -1,8 +1,8 @@
 import React from "react";
-import "../Assignments/assignments.css";
+import "./student.css";
 import { Link } from "react-router-dom";
 
-const Home = (props) => {
+const StudentProfile = (props) => {
 
 // Need to add student if any and students teacher
 
@@ -10,36 +10,36 @@ const Home = (props) => {
     return (
                  
 <div className="container">
-    <form className="form-newCohort">
+    <form className="form-studentPorfile">
         <div className="row">
             <div className="col">
                 <div>
-                <h1 className="fs-1 fw-bold mb-5 text">User Profile</h1>
+                <h1 className="fs-1 fw-bold mb-5 text">Student Profile</h1>
                 </div>
                     <div className="d-grid gap-4">
-                        <label className="fs-5 fw-normal">
-                            Username: {props.user.username}
-                        </label>
                         <label className="fs-5 fw-normal">
                             Name: {props.user.first_name} {props.user.last_name}
                         </label>
                         <label className="fs-5 ">
-                            Email: {props.user.email}
+                            Address: {props.student.address}
                         </label>
                         <label className="fs-5 fw-normal">
-                            Phone Number: {props.user.phone_number}
+                            Zipcode: {props.student.zipcode}
                         </label>
                         <label className="fs-5 fw-normal">
-                            Address: {props.user.address}
+                            Guardian: {props.student.guardian_one_id}
                         </label>
                         <label className="fs-5 fw-normal">
-                            Zipcode: {props.user.zipcode}
+                            Guardian: {props.student.guardian_two_id}
+                        </label>
+                        <label className="fs-5 fw-normal">
+                            Account Balance: {props.student.account_balance}
                         </label>
                     </div>
                     <br></br>
         <div className="card-footer">
-            <Link to="/UpdateRegister">
-                <button className="btn btn-outline-light btn-lg" type="button">Update Info</button>
+            <Link to="/Parent">
+                <button className="btn btn-outline-light btn-lg" type="button">Parents/Guardian</button>
             </Link>
         </div>
         </div>
@@ -49,4 +49,4 @@ const Home = (props) => {
     );
 };
 
-export default Home;
+export default StudentProfile;

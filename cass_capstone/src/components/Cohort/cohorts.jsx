@@ -7,6 +7,7 @@ const DisplayCohorts = (props) => {
 // Need Button beside student to link to student profile
 // Button to list all students in cohort
 
+
     return (
         <div>
         <div className="newcohort">
@@ -24,22 +25,14 @@ const DisplayCohorts = (props) => {
                 <tbody>
                         {props.cohorts.map((cohort, index) => { 
                             return(  
-                            <tr key={index}>                        
+                            <tr key={index}>          
                                 <td>{cohort.cohort_name}</td>
                                 <td>{cohort.student}</td>
-                                {/* <td>
-                                <select>
-                                    {props.students.map((student, index) => {
-                                    return(
-                                        <option key={index}                        
-                                            value={student.id}>
-                                            {student.first_name} {student.last_name}
-                                        </option>
-                                       )
-                                    })}
-                                </select>
-                                </td>   */}
-                                <td><button class="btn btn-outline-light btn-lg" type="button" onClick={() => (cohort.id)}>See Cohort</button></td>
+                                <div className="cohort">
+                                    <Link to="/Cohort">
+                                        <button className="btn btn-outline-light btn-lg" type="button">Cohort</button>
+                                    </Link>
+                                </div>
                             </tr>
                             )              
                         })}

@@ -1,33 +1,37 @@
 import React from "react";
-// import "./assignments.css";
+import "./student.css";
+// import { Link } from 'react-router-dom';
 
 
-const StudentDropdown = (props) => {
+const StudentList = (props) => {
 
 
 
 
 return(
-                <select>
+
+    <div>
+        <table className="table-container">
+                <thead>
+                    <tr>
+                        <th> Student </th>
+                    </tr>
+                </thead>
+                <tbody>
                         {props.students.map((student, index) => {
                             return(
-                            <option key={index}                        
-                                value={student.id}>
-                                {student.first_name} {student.last_name}
-                            </option>  
+                            <tr key={index}>                        
+                                {/* <Link to="/StudentProfile"> */}
+                                    <td>{student.first_name}{student.last_name}</td>
+                                {/* </Link> */}
+                            </tr>  
                             ) 
                         })}                 
-                        {/* {props.assignments.map((assignment, index) =>{
-                            return(
-                                <option key={index}
-                                value={assignment.id}>
-                                    {assignment.assignment_name}
-                                </option>
-                            )
-                        })} */}
-                </select>
+                </tbody>
+            </table>
+        </div>
 
 );
 };
 
-export default StudentDropdown;
+export default StudentList;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import 'react-router-dom';
 import '../Registration/register.css';
+import { Link } from "react-router-dom";
+
 
 
 class NewCohort extends Component {
@@ -73,9 +75,11 @@ class NewCohort extends Component {
                   </label>
                 </div>
                   
-                  <div className="card-footer">
-                  <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>
-                  </div>
+                <div className="card-footer">
+                  <Link to="/Grades">
+                    <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>
+                  </Link>
+                </div>
             </div>    
         </div>          
     </form>

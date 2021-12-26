@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../Registration/register.css';
+import { Link } from "react-router-dom";
 
 class UpdateRegister extends Component {
     constructor(props) {
@@ -228,7 +229,9 @@ class UpdateRegister extends Component {
                 </div>
 
                 <div className="card-footer">
+                  <Link to="/Home">
                     <button className="btn btn-outline-light btn-lg" type="submit"> Update </button>
+                  </Link>
                 </div>
             </div>  
         </div>

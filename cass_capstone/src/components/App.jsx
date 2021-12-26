@@ -8,15 +8,17 @@ import NavBar from './NavBar/navbar.jsx';
 import Home from './Profile/profile';
 import DisplayAssignments from './Assignments/assignments';
 import NewAssignment from './Assignments/assignment_input';
-import DisplayCohorts from './Cohort/cohort';
+import DisplayCohorts from './Cohort/cohorts';
+import DisplayCohort from './Cohort/cohort_list';
 import NewCohort from './Cohort/cohort_input';
 import DisplayGrades from './Grades/grades';
 import NewGrade from './Grades/grades_input';
-import StudentProfile from './Cohort/studentprofile';
+import StudentProfile from './Students/student_profile';
 import StudentDropdown from './Students/student_list';
+import NewStudent from './Students/student_input';
+import SearchBar from './SearchBar/searchbar';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
-
 
 class App extends Component {
     constructor(props) {
@@ -40,8 +42,8 @@ class App extends Component {
         this.getAllGrades()
         this.getAllAssignments()
         this.getAllCohorts()
-        // this.getUserJWT()
         this.getUserInfo()
+        this.searchStudents()
         try {
             const user = jwtDecode(jwt);
             this.setState({ loggedInUser: user });
@@ -98,7 +100,7 @@ class App extends Component {
     
     getUserInfo = async () => {
         const jwt = localStorage.getItem('token')
-        const response = await axios.get('http://127.0.0.1:8000/api/auth/user/8', {Headers: {Authorization: 'Bearer' + jwt}});
+        const response = await axios.get('http://127.0.0.1:8000/api/auth/user/${user.id}', {Headers: {Authorization: 'Bearer' + jwt}});
         console.log('Logged In info', response.data)
         this.setState({
             user: response.data
@@ -138,6 +140,24 @@ class App extends Component {
         console.log(response)
         this.setState({
             assignments: response.data
+        });
+    }
+
+    getCohort = async () => {
+        const jwt = localStorage.getItem('token')
+        const response = await axios.get('http://127.0.0.1:8000/cohorts/cohorts/${cohort.id}', {Headers: {Authorization: 'Bearer' + jwt}});
+        console.log(response)
+        this.setState({
+            cohort: response.data
+        });
+    }
+
+    getStudent = async () => {
+        const jwt = localStorage.getItem('token')
+        const response = await axios.get('http://127.0.0.1:8000/students/students/${student.id}', {Headers: {Authorization: 'Bearer' + jwt}});
+        console.log(response)
+        this.setState({
+            student: response.data
         });
     }
 
@@ -241,13 +261,18 @@ class App extends Component {
         }
     }
 
+    searchStudents = (results) => {
+        this.setState({
+            students: results
+        })
+    }
     
     render() {
         const user = this.state.loggedInUser
         return (
             <div>
                 <NavBar user={user} />
-
+                <SearchBar searchStudents={this.searchStudents}/>
                 <Switch>
 
                     <Route path='/' exact={true} render={(props) => {
@@ -262,14 +287,16 @@ class App extends Component {
                     <Route path='/Register' render={props => <Register {...props} registerNewUser={this.state.registerNewUser} />} />
                     <Route path='/Home' render={props => <Home {...props} user={this.state.user}/>} />
                     <Route path='/Cohorts' render={props => <DisplayCohorts {...props} cohorts={this.state.cohorts} />} />
+                    <Route path='/Cohort' render={props => <DisplayCohort {...props} cohort={this.state.cohort} />} />
                     <Route path='/Grades' render={props => <DisplayGrades {...props} grades={this.state.grades} />} />
                     <Route path='/Assignments' render={props => <DisplayAssignments {...props} assignments={this.state.assignments} />} />
                     <Route path='/NewAssignment' render={props => <NewAssignment {...props} addNewAssignment={this.addNewAssignment}/>} />
                     <Route path='/NewGrade' render={props => <NewGrade {...props} new_grade={this.state.new_grade} />} />
                     <Route path='/NewCohort' render={props => <NewCohort {...props} addNewCohort={this.addNewCohort} />} />
                     <Route path='/UpdateRegister' render={props => <UpdateRegister {...props} updateRegister={this.updateRegister} />} />
-                    <Route path='/StudentProfile' render={props => <StudentProfile {...props} students={this.state.students} />} />
-                    <Route path='/Student_List' render={props => <StudentDropdown {...props} students={this.state.students} /> } />
+                    <Route path='/StudentProfile' render={props => <StudentProfile {...props} student={this.state.student} />} />
+                    <Route path='/StudentList' render={props => <StudentDropdown {...props} students={this.state.students} /> } />
+                    <Route path='/NewStudent' render={props => <NewStudent {...props} addNewStudent={this.addNewStudent} /> } />
 
                 </Switch>
             </div>

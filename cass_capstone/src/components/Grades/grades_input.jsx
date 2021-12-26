@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './grades.css';
+import { Link } from "react-router-dom";
+
 
 class NewGrade extends Component {
     constructor(props) {
@@ -109,7 +111,9 @@ class NewGrade extends Component {
                   </label>
                 </div>
                 <div className="card-footer">
+                  <Link to="/Grades">
                     <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>
+                  </Link>
                 </div>
             </div>  
   
