@@ -96,6 +96,7 @@ class Register extends Component {
                     />
                   </label>
                 </div>
+                
                 <div className="form-outline form-white mb-2">
                   <label className="form-label fs-6 fw-bold">
                     <input 
@@ -109,6 +110,7 @@ class Register extends Component {
                     />
                   </label>
                 </div>
+
                 <div className="form-outline form-white mb-2">
                   <label className="form-label fs-6 fw-bold">
                     <input 
@@ -122,6 +124,7 @@ class Register extends Component {
                     />
                   </label>
                 </div>
+
                 <div className="form-outline form-white mb-2">
                   <label className="form-label fs-6 fw-bold">
                     <input 
@@ -136,6 +139,7 @@ class Register extends Component {
                     />
                   </label>
                 </div>
+
                 <div className="form-outline form-white mb-2">           
                   <label className="form-label fs-6 fw-bold">
                     <input 
@@ -149,6 +153,7 @@ class Register extends Component {
                     />
                   </label>
                 </div>
+
                 <div className="form-outline form-white mb-2">
                   <label className="form-label fs-6 fw-bold">
                     <input 
@@ -162,6 +167,7 @@ class Register extends Component {
                     />
                   </label>
                 </div>
+
                 <div className="form-outline form-white mb-2">            
                   <label className="form-label fs-6 fw-bold">
                     <input 
@@ -175,6 +181,7 @@ class Register extends Component {
                     />
                   </label>
                 </div>
+
                 <div className="form-outline form-white mb-2">
                   <label className="form-label fs-6 fw-bold">
                     <input 

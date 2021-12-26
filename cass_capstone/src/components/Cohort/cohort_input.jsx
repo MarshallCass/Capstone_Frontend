@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'react-router-dom';
-import '../Registration/register.css';
+import './cohort.css';
 import { Link } from "react-router-dom";
 
 

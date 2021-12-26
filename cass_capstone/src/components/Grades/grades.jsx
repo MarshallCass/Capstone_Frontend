@@ -8,13 +8,6 @@ const DisplayGrades = (props) => {
 
 
 
-    //  const handleChange = async (productId) => {
-    //      let token = localStorage.getItem("token")
-    //      let user = jwtDecode(token);
-    //      console.log(user)
- 
-    //      }
-
 
     return (
         <div>

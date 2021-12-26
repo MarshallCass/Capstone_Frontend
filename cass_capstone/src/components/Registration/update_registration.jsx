@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Registration/register.css';
+import './register.css';
 import { Link } from "react-router-dom";
 
 class UpdateRegister extends Component {

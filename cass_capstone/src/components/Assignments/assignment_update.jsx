@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import './grades.css';
+import 'react-router-dom';
+import './assignments.css';
 import { Link } from "react-router-dom";
 
-
-class NewGrade extends Component {
+class UpdateAssignment extends Component {
     constructor(props) {
         super(props)
         this.state = {
-          student: "",
-          assignment: "",
-          grade:"",
-          comments:"",
+            assignment_subject: "",
+            assignment_name: "",
+            assignment_description:"",
+            assignment_notes:"", 
         };
     }
 
@@ -22,56 +22,55 @@ class NewGrade extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const grade = {
-            student: this.state.student,
-            grade: this.state.grade,
-            assignement: this.state.assignment,
-            comments: this.state.comments
+        const assignment = {
+            assignment_name: this.state.assignment_name,
+            assignment_subject: this.state.assignment_subject,
+            assignment_description: this.state.assignment_description,
+            assignment_notes: this.state.assignment_notes,
         };
-        this.props.new_grade(grade);
+        this.props.addNewAssignment(assignment);
         this.setState({
-            student: "",
-            grade: "",
-            assignment: "",
-            comments: "",
-        });
-        
+            assignment_subject: "",
+            assignment_name: "",
+            assignment_description:"",
+            assignment_notes:"", 
+        }); 
     }
-
-
-    render (){
-
-    return (
-       
+ 
+    render() {   
+    
+        return (
+          
 <div className="container">
-   <form className="add_grade">
+    <form onSubmit={this.handleSubmit} className="form-newassignment">
+        <div className="row">
             <div className="col">
-            <div>
-                  <h1 className="fs-1 fw-bold mb-5 text-uppercase">New Grades</h1>
-                  <p className="fs-5 text-white-50 mb-4">Please enter grade information!</p>
+                <div>
+                  <h1 className="fs-1 fw-bold mb-5 text">New Assignment</h1>
+                  <p className="fs-5 text-white-50 mb-4">Please enter assignment information!</p>
                 </div>
                 <div className="form-outline form-white mb-2">
                   <label className="form-label fs-6 fw-bold">
-                    <input 
-                      type="text" 
-                      name = "student" 
-                      id="typeStudentX"
+                    <input
+                      type="text"
+                      name = "assignment_subject" 
+                      id="typeSubjectX"
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
-                      value={this.state.student}
-                      placeholder='Student'
+                      value={this.state.assignment_subject}
+                      placeholder='Subject'
                     />
-                  </label>
+                 </label>
                 </div>
                 <div className="form-outline form-white mb-2">
                   <label className="form-label fs-6 fw-bold">
                     <input 
                       type="text" 
-                      name = "assignment" 
-                      id="typeAssignmentX" 
+                      name = "assignment_name" 
+                      id="typeNameX" 
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
-                      value={this.state.assignment}
+                      value={this.state.assignment_name}
                       placeholder='Assignment'
                     />
                   </label>
@@ -80,12 +79,12 @@ class NewGrade extends Component {
                   <label className="form-label fs-6 fw-bold">
                     <input 
                       type="text" 
-                      name = "username" 
-                      id="typeGradeX" 
+                      name = "assignment_description" 
+                      id="typeDescriptionX" 
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
-                      value={this.state.grade}
-                      placeholder='Grade'
+                      value={this.state.assignment_description}
+                      placeholder='Description'
                     />
                   </label>
                 </div>
@@ -93,27 +92,27 @@ class NewGrade extends Component {
                   <label className="form-label fs-6 fw-bold">
                     <input 
                       type="text" 
-                      name = "comments" 
-                      id="typeCommentsX" 
+                      name = "assignment_notes" 
+                      id="typeNotesX" 
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
-                      value={this.state.comments}
-                      placeholder='Comments'
+                      value={this.state.assignment_notes}
+                      placeholder='Notes'
                     />
                   </label>
+                  
                 </div>
                 <div className="card-footer">
-                  <Link to="/Grades">
+                  <Link to="/Assignments">
                     <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>
                   </Link>
                 </div>
-            </div>  
-  
-  </form>
+            </div>    
+        </div>          
+    </form>
 </div>
-
-    )
+     )
+    }
 }
-}
 
-export default NewGrade;
+export default UpdateAssignment

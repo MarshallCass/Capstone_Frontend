@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from './Login/login';
 import Register from './Registration/register';
-import UpdateRegister from './Profile/update_registration';
+import UpdateRegister from './Registration/update_registration';
 import NavBar from './NavBar/navbar.jsx';
 import Home from './Profile/profile';
 import DisplayAssignments from './Assignments/assignments';
+import UpdateAssignment from './Assignments/assignment_update';
 import NewAssignment from './Assignments/assignment_input';
 import DisplayCohorts from './Cohort/cohorts';
 import DisplayCohort from './Cohort/cohort_list';
@@ -14,6 +15,7 @@ import NewCohort from './Cohort/cohort_input';
 import DisplayGrades from './Grades/grades';
 import NewGrade from './Grades/grades_input';
 import StudentProfile from './Students/student_profile';
+import StudentUpdate from './Students/student_update';
 import StudentDropdown from './Students/student_list';
 import NewStudent from './Students/student_input';
 import SearchBar from './SearchBar/searchbar';
@@ -100,7 +102,7 @@ class App extends Component {
     
     getUserInfo = async () => {
         const jwt = localStorage.getItem('token')
-        const response = await axios.get('http://127.0.0.1:8000/api/auth/user/${user.id}', {Headers: {Authorization: 'Bearer' + jwt}});
+        const response = await axios.get('http://127.0.0.1:8000/api/auth/user/', {Headers: {Authorization: 'Bearer' + jwt}});
         console.log('Logged In info', response.data)
         this.setState({
             user: response.data
@@ -145,7 +147,7 @@ class App extends Component {
 
     getCohort = async () => {
         const jwt = localStorage.getItem('token')
-        const response = await axios.get('http://127.0.0.1:8000/cohorts/cohorts/${cohort.id}', {Headers: {Authorization: 'Bearer' + jwt}});
+        const response = await axios.get('http://127.0.0.1:8000/cohorts/cohorts/', {Headers: {Authorization: 'Bearer' + jwt}});
         console.log(response)
         this.setState({
             cohort: response.data
@@ -154,7 +156,7 @@ class App extends Component {
 
     getStudent = async () => {
         const jwt = localStorage.getItem('token')
-        const response = await axios.get('http://127.0.0.1:8000/students/students/${student.id}', {Headers: {Authorization: 'Bearer' + jwt}});
+        const response = await axios.get('http://127.0.0.1:8000/students/students/', {Headers: {Authorization: 'Bearer' + jwt}});
         console.log(response)
         this.setState({
             student: response.data
@@ -169,7 +171,10 @@ class App extends Component {
             this.student = ({ 'First Name': student.first_name, 
                             'Last Name': student.last_name, 
                             'Address': student.address, 
-                            'Zipcode': student.zipcode 
+                            'Zipcode': student.zipcode,
+                            'Guardian One': student.guardian_one,
+                            'Guardian Two': student.guardian_two,
+                            'Account Balance': student.account_balance,
                             })
             this.setState({
                 students: response.data
@@ -261,6 +266,47 @@ class App extends Component {
         }
     }
 
+    updateStudent = async (student) => {
+        try {
+            const jwt = localStorage.getItem('token')
+            const response = await axios.put('http://127.0.0.1:8000/students/students/', student, {Headers: {Authorization: 'Bearer' + jwt}});
+            console.log(response)
+            this.student = ({ 'First Name': student.first_name, 
+                            'Last Name': student.last_name, 
+                            'Address': student.address, 
+                            'Zipcode': student.zipcode,
+                            'Guardian One': student.guardian_one,
+                            'Guardian Two': student.guardian_two,
+                            'Account Balance': student.account_balance,
+                            })
+            this.setState({
+                students: response.data
+            });
+        }
+        catch (error) {
+            console.log(error, 'Invalid input');
+        }
+    }
+    updateAssignment = async (assignment) => {
+        try {
+            const jwt = localStorage.getItem('token')
+            const response = await axios.post('http://127.0.0.1:8000/assignments/assignments/', assignment, {Headers: {Authorization: 'Bearer' + jwt}});
+            console.log(response)
+            this.assignment = ({ 'Assignment Subject': assignment.assignment_subject, 
+                                    'Assignment Name': assignment.assignment_name,
+                                    'Assignment Description' : assignment.assignment_description,  
+                                    'Assignment Notes' : assignment.assignment_notes
+                                   })
+            this.setState({
+               assignments: response.data
+            });
+        }
+        catch (error) {
+            console.log(error, 'Invalid input');
+        }
+    }
+
+
     searchStudents = (results) => {
         this.setState({
             students: results
@@ -285,18 +331,20 @@ class App extends Component {
                     />
                     <Route path='/Login' render={props => <Login {...props} loginUser={this.loginUser} />} />
                     <Route path='/Register' render={props => <Register {...props} registerNewUser={this.state.registerNewUser} />} />
+                    <Route path='/UpdateRegister' render={props => <UpdateRegister {...props} updateRegister={this.updateRegister} />} />
                     <Route path='/Home' render={props => <Home {...props} user={this.state.user}/>} />
+                    <Route path='/NewCohort' render={props => <NewCohort {...props} addNewCohort={this.addNewCohort} />} />
                     <Route path='/Cohorts' render={props => <DisplayCohorts {...props} cohorts={this.state.cohorts} />} />
                     <Route path='/Cohort' render={props => <DisplayCohort {...props} cohort={this.state.cohort} />} />
                     <Route path='/Grades' render={props => <DisplayGrades {...props} grades={this.state.grades} />} />
                     <Route path='/Assignments' render={props => <DisplayAssignments {...props} assignments={this.state.assignments} />} />
-                    <Route path='/NewAssignment' render={props => <NewAssignment {...props} addNewAssignment={this.addNewAssignment}/>} />
+                    <Route path='/NewAssignment' render={props => <NewAssignment {...props} addNewAssignment={this.addNewAssignment} />} />
+                    <Route path='/UpdateAssignment' render={props => <UpdateAssignment {...props} updateAssignment={this.updateAssignment} />} />
                     <Route path='/NewGrade' render={props => <NewGrade {...props} new_grade={this.state.new_grade} />} />
-                    <Route path='/NewCohort' render={props => <NewCohort {...props} addNewCohort={this.addNewCohort} />} />
-                    <Route path='/UpdateRegister' render={props => <UpdateRegister {...props} updateRegister={this.updateRegister} />} />
+                    <Route path='/NewStudent' render={props => <NewStudent {...props} addNewStudent={this.addNewStudent} />} />
                     <Route path='/StudentProfile' render={props => <StudentProfile {...props} student={this.state.student} />} />
-                    <Route path='/StudentList' render={props => <StudentDropdown {...props} students={this.state.students} /> } />
-                    <Route path='/NewStudent' render={props => <NewStudent {...props} addNewStudent={this.addNewStudent} /> } />
+                    <Route path='/StudentUpdate' render={props => <StudentUpdate {...props} updateStudent={this.updateStudent} />} />
+                    <Route path='/StudentList' render={props => <StudentDropdown {...props} students={this.state.students} />} />
 
                 </Switch>
             </div>

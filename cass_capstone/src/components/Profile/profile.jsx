@@ -1,5 +1,5 @@
 import React from "react";
-import "../Assignments/assignments.css";
+import "./profile.css";
 import { Link } from "react-router-dom";
 
 const Home = (props) => {
