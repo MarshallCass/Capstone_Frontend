@@ -3,7 +3,7 @@ import './grades.css';
 import { Link } from "react-router-dom";
 
 
-class NewGrade extends Component {
+class UpdateGrade extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -116,4 +116,4 @@ class NewGrade extends Component {
 }
 }
 
-export default NewGrade;
+export default UpdateGrade;
