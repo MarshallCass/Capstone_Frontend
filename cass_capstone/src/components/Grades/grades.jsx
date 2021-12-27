@@ -10,13 +10,7 @@ const DisplayGrades = (props) => {
 
 
     return (
-        <div>
-        <div className="newgrades">
-            <Link to="/NewGrade">
-            <button className="btn btn-outline-light btn-lg" type="button">Add Grades</button>
-            </Link>
-        </div>
-             
+        <div>           
             <table className="table-container">
                 <thead>
                     <tr>
@@ -39,6 +33,11 @@ const DisplayGrades = (props) => {
                         })}
                 </tbody>
             </table>
+            <div className="card-footer">
+            <Link to="/NewGrade">
+            <button className="btn btn-outline-light btn-lg" type="button">Add Grades</button>
+            </Link>
+        </div>
         </div>
     );
 };

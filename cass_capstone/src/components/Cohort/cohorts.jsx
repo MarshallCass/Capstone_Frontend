@@ -10,11 +10,7 @@ const DisplayCohorts = (props) => {
 
     return (
         <div>
-        <div className="newcohort">
-            <Link to="/NewCohort">
-            <button className="btn btn-outline-light btn-lg" type="button">New Cohort</button>
-            </Link>
-        </div>
+       
             <table className="table-container">
                 <thead>
                     <tr>
@@ -38,6 +34,11 @@ const DisplayCohorts = (props) => {
                         })}
                 </tbody>
             </table>
+            <div className="card-footer">
+                <Link to="/NewCohort">
+                    <button className="btn btn-outline-light btn-lg" type="button">New Cohort</button>
+                </Link>
+        </div>
         </div>
     );
 };

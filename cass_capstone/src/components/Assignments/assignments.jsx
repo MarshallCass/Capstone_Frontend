@@ -10,11 +10,6 @@ const DisplayAssignments = (props) => {
 
     return (
         <div>
-        <div className="newassignment">
-            <Link to="/NewAssignment">
-            <button className="btn btn-outline-light btn-lg" type="button">New Assignment</button>
-            </Link>
-        </div>
             <table className="table-container">
                 <thead>
                     <tr>
@@ -37,6 +32,11 @@ const DisplayAssignments = (props) => {
                         })}                 
                 </tbody>
             </table>
+            <div className="card-footer">
+                <Link to="/NewAssignment">
+                    <button className="btn btn-outline-light btn-lg" type="button">New Assignment</button>
+                </Link>
+        </div>
         </div>
     );
 };
