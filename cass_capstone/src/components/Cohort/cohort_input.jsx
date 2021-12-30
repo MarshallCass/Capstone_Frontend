@@ -62,21 +62,20 @@ class NewCohort extends Component {
                   </label>
                 </div>
                 <div className="form-outline form-white mb-2">
-                  <label className="form-label fs-6 fw-bold">
-                    <input 
-                      type="text" 
-                      name = "student" 
-                      id="typestudentX" 
-                      className="form-control form-control-lg" 
-                      onChange={this.handleChange} 
-                      value={this.state.student}
-                      placeholder='student'
-                    />
-                  </label>
+                  <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg">
+                    <option value=" " selected disabled hidden>Student</option>
+                        {this.props.students.map((student, index) => {
+                            return(
+                            <option key={index}                        
+                                value={this.state.student.id} onChange={this.handleChange}>
+                                {student.first_name} {student.last_name}
+                            </option>  
+                            ) 
+                        })}                 
+                    </select>
                 </div>
-                  
                 <div className="card-footer">
-                  <Link to="/Grades">
+                  <Link to="/Cohorts">
                     <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>
                   </Link>
                 </div>

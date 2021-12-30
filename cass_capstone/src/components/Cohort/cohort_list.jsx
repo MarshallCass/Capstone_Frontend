@@ -1,40 +1,49 @@
-import React from "react";
+import React, { Component } from "react";
 import "./cohort.css";
 import { Link } from "react-router-dom";
 
+class DisplayCohort extends Component {
+        constructor(props) {
+            super(props)
+            this.state = {
 
-const DisplayCohort = (props) => {
+        };
+    }
 
+
+    render (){
 
     return (
         <div>
-        <div className="cohorts">
-            <Link to="/Cohorts">
-            <button className="btn btn-outline-light btn-lg" type="button">Cohorts</button>
-            </Link>
-        </div>
             <table className="table-container">
                 <thead>
                     <tr>
-                        <th> Cohort </th>
+                        <th> Cohort Name </th>
                         <th> Student </th>
                     </tr>
                 </thead>
                 <tbody>
-                        {props.cohorts.map((cohort, index) => {
-                            return(
-                            <tr key={index}>                        
+                        {this.props.cohorts.map((cohort, index) => { 
+                            return(  
+                            <tr key={index}>          
                                 <td>{cohort.cohort_name}</td>
-                                <Link to="/StudentProfile">
-                                    <td>{cohort.student_id}</td>
-                                </Link>
-                            </tr>  
-                            ) 
-                        })}                 
+                                <td>{cohort.student}</td>
+                                <div className="cohort">
+                                    <button className="btn btn-outline-light btn-lg" type="Button">Cohort</button>
+                                </div>
+                            </tr>
+                            )              
+                        })}
                 </tbody>
             </table>
+            <div className="card-footer">
+                <Link to="/NewCohort">
+                    <button className="btn btn-outline-light btn-lg" type="button">New Cohort</button>
+                </Link>
+            </div>
         </div>
     );
+    };
 };
 
 export default DisplayCohort;
