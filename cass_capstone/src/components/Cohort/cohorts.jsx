@@ -16,23 +16,25 @@ class DisplayCohorts extends Component {
         <div>
             <table className="table-container">
                 <thead>
-                    <tr>
-                        <th> Cohort Name </th>
-                        <th> Student </th>
-                    </tr>
+                        <tr>
+                            <th> Cohort Name </th>
+                            <th> Student </th>
+                        </tr>
                 </thead>
                 <tbody>
-                        {this.props.cohorts.map((cohort, index) => { 
-                            return(  
-                            <tr key={index}>          
-                                <td>{cohort.cohort_name}</td>
-                                <td>{cohort.student}</td>
-                                <div className="cohort">
-                                    <button className="btn btn-outline-light btn-lg" type="Button">Cohort</button>
-                                </div>
-                            </tr>
-                            )              
-                        })}
+                    {this.props.cohorts.map((cohort, index) => { 
+                        return(  
+                        <tr key={index}>          
+                            <td>{cohort.cohort_name}</td>
+                            <td>{cohort.student}</td>
+                            <div className="cohort">
+                                <Link to="/Cohort">
+                                    <button className="btn btn-outline-light btn-lg" type="Button"> Cohort </button>
+                                </Link>
+                            </div>
+                        </tr>
+                        )              
+                    })}
                 </tbody>
             </table>
             <div className="card-footer">

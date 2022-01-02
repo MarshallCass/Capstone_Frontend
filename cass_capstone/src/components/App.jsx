@@ -60,7 +60,7 @@ class App extends Component {
     registerNewUser = async (user) => {
         console.log("User object from Register: ", user)
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/auth/register/', user);
+            const response = await axios.post(`http://127.0.0.1:8000/api/auth/register/`, user);
             console.log(response)
             this.registerNewUser = ({ 
                 'userName': user.username, 
@@ -87,7 +87,7 @@ class App extends Component {
     loginUser = async (login) => {
         console.log("User object from login:", login)
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/auth/login/', login);
+            const response = await axios.post(`http://127.0.0.1:8000/api/auth/login/`, login);
             this.setState({
                 user: jwtDecode(response.data.access)
             });
@@ -116,7 +116,7 @@ class App extends Component {
 
     getAllGrades = async () => {
         const jwt = localStorage.getItem('token')
-        const response = await axios.get('http://127.0.0.1:8000/grades/grades/', {Headers: {Authorization: 'Bearer' + jwt}});
+        const response = await axios.get(`http://127.0.0.1:8000/grades/grades/`, {Headers: {Authorization: 'Bearer' + jwt}});
         console.log(response)
         this.setState({
             grades: response.data
@@ -125,7 +125,7 @@ class App extends Component {
 
     getAllCohorts = async () => {
         const jwt = localStorage.getItem('token')
-        const response = await axios.get('http://127.0.0.1:8000/cohorts/cohorts/', {Headers: {Authorization: 'Bearer' + jwt}});
+        const response = await axios.get(`http://127.0.0.1:8000/cohorts/cohorts/`, {Headers: {Authorization: 'Bearer' + jwt}});
         console.log(response)
         this.setState({
             cohorts: response.data
@@ -134,7 +134,7 @@ class App extends Component {
 
     getAllStudents = async () => {
         const jwt = localStorage.getItem('token')
-        const response = await axios.get('http://127.0.0.1:8000/students/students/', {Headers: {Authorization: 'Bearer' + jwt}});
+        const response = await axios.get(`http://127.0.0.1:8000/students/students/`, {Headers: {Authorization: 'Bearer' + jwt}});
         console.log(response)
         this.setState({
             students: response.data
@@ -143,7 +143,7 @@ class App extends Component {
 
     getAllAssignments = async () => {
         const jwt = localStorage.getItem('token')
-        const response = await axios.get('http://127.0.0.1:8000/assignments/assignments/', {Headers: {Authorization: 'Bearer' + jwt}});
+        const response = await axios.get(`http://127.0.0.1:8000/assignments/assignments/`, {Headers: {Authorization: 'Bearer' + jwt}});
         console.log(response)
         this.setState({
             assignments: response.data
@@ -152,16 +152,16 @@ class App extends Component {
 
     getCohort = async () => {
         const jwt = localStorage.getItem('token')
-        const response = await axios.get(`http://127.0.0.1:8000/cohorts/cohorts/1/`, {Headers: {Authorization: 'Bearer' + jwt}});
+        const response = await axios.get(`http://127.0.0.1:8000/cohorts/cohorts/`, {Headers: {Authorization: 'Bearer' + jwt}});
         console.log(response)
         this.setState({
-            cohort: response.data
+            cohorts: response.data
         });
     }
 
     getStudent = async () => {
         const jwt = localStorage.getItem('token')
-        const response = await axios.get('http://127.0.0.1:8000/students/students/', {Headers: {Authorization: 'Bearer' + jwt}});
+        const response = await axios.get(`http://127.0.0.1:8000/students/students/${1}`, {Headers: {Authorization: 'Bearer' + jwt}});
         console.log(response)
         this.setState({
             student: response.data
@@ -171,7 +171,7 @@ class App extends Component {
     addNewStudent = async (student) => {
         try {
             const jwt = localStorage.getItem('token')
-            const response = await axios.post('http://127.0.0.1:8000/students/students/', student, {Headers: {Authorization: 'Bearer' + jwt}});
+            const response = await axios.post(`http://127.0.0.1:8000/students/students/`, student, {Headers: {Authorization: 'Bearer' + jwt}});
             console.log(response)
             this.student = ({ 'First Name': student.first_name, 
                             'Last Name': student.last_name, 
@@ -193,16 +193,16 @@ class App extends Component {
     addNewCohort = async (cohort) => {
         try {
             const jwt = localStorage.getItem('token')
-            const response = await axios.post('http://127.0.0.1:8000/cohorts/cohorts/', cohort, {Headers: {Authorization: 'Bearer' + jwt}});
+            console.log("Info To Post", cohort)
+            const response = await axios.post(`http://127.0.0.1:8000/cohorts/cohorts/`, cohort, {Headers: {Authorization: 'Bearer' + jwt}});
             console.log(response)
             this.cohort = ({ 'Cohort Name': cohort.cohort_name, 
-                            'Student': cohort.student.id
+                            'Student': cohort.student
                             })
             this.setState({
                 cohorts: response.data
             });
-        }
-        catch (error) {
+        } catch (error) {
             console.log(error, 'Invalid input');
         }
     }
@@ -210,7 +210,7 @@ class App extends Component {
     addNewAssignment = async (assignment) => {
         try {
             const jwt = localStorage.getItem('token')
-            const response = await axios.post('http://127.0.0.1:8000/assignments/assignments/', assignment, {Headers: {Authorization: 'Bearer' + jwt}});
+            const response = await axios.post(`http://127.0.0.1:8000/assignments/assignments/`, assignment, {Headers: {Authorization: 'Bearer' + jwt}});
             console.log(response)
             this.assignment = ({ 'Assignment Subject': assignment.assignment_subject, 
                                     'Assignment Name': assignment.assignment_name,
@@ -229,7 +229,7 @@ class App extends Component {
     addNewGrade = async (grade) => {
         try {
             const jwt = localStorage.getItem('token')
-            const response = await axios.post('http://127.0.0.1:8000/grades/grades/', grade, {Headers: {Authorization: 'Bearer' + jwt}});
+            const response = await axios.post(`http://127.0.0.1:8000/grades/grades/`, grade, {Headers: {Authorization: 'Bearer' + jwt}});
             console.log(response)
             this.new_grade = ({'Student': grade.student, 
                               'Assignment': grade.assignment,
@@ -249,7 +249,7 @@ class App extends Component {
         console.log("User object from Register: ", user)
         try {
             const jwt = localStorage.getItem('token')
-            const response = await axios.put('http://127.0.0.1:8000/api/auth/register/', user, {Headers: {Authorization: 'Bearer' + jwt}});
+            const response = await axios.put(`http://127.0.0.1:8000/api/auth/register/${user.user_id}`, user, {Headers: {Authorization: 'Bearer' + jwt}});
             console.log(response)
             this.updateRegister = ({ 
                 'userName': user.username, 
@@ -276,7 +276,7 @@ class App extends Component {
     updateStudent = async (student) => {
         try {
             const jwt = localStorage.getItem('token')
-            const response = await axios.put('http://127.0.0.1:8000/students/students/', student, {Headers: {Authorization: 'Bearer' + jwt}});
+            const response = await axios.put(`http://127.0.0.1:8000/students/students/${student.id}`, student, {Headers: {Authorization: 'Bearer' + jwt}});
             console.log(response)
             this.student = ({ 'First Name': student.first_name, 
                             'Last Name': student.last_name, 
@@ -297,7 +297,7 @@ class App extends Component {
     updateAssignment = async (assignment) => {
         try {
             const jwt = localStorage.getItem('token')
-            const response = await axios.post('http://127.0.0.1:8000/assignments/assignments/', assignment, {Headers: {Authorization: 'Bearer' + jwt}});
+            const response = await axios.put(`http://127.0.0.1:8000/assignments/assignments/${assignment.id}`, assignment, {Headers: {Authorization: 'Bearer' + jwt}});
             console.log(response)
             this.assignment = ({ 'Assignment Subject': assignment.assignment_subject, 
                                     'Assignment Name': assignment.assignment_name,
@@ -338,7 +338,7 @@ class App extends Component {
                     />
                     <Route path='/Login' render={props => <Login {...props} loginUser={this.loginUser} />} />
                     <Route path='/Register' render={props => <Register {...props} registerNewUser={this.state.registerNewUser} />} />
-                    <Route path='/UpdateRegister' render={props => <UpdateRegister {...props} updateRegister={this.updateRegister} />} />
+                    <Route path='/UpdateRegister' render={props => <UpdateRegister {...props} updateRegister={this.updateRegister} user={this.state.user}/>} />
                     <Route path='/Home' render={props => <Home {...props} user={this.state.user}/>} />
                     <Route path='/NewCohort' render={props => <NewCohort {...props} addNewCohort={this.addNewCohort} students={this.state.students}/>} />
                     <Route path='/Cohorts' render={props => <DisplayCohorts {...props} cohorts={this.state.cohorts} getCohort={this.getCohort}/>} />
@@ -353,7 +353,6 @@ class App extends Component {
                     <Route path='/StudentProfile' render={props => <StudentProfile {...props} student={this.state.student} />} />
                     <Route path='/StudentUpdate' render={props => <StudentUpdate {...props} updateStudent={this.updateStudent} />} />
                     <Route path='/StudentList' render={props => <StudentDropdown {...props} students={this.state.students} />} />
-
                 </Switch>
             </div>
         )

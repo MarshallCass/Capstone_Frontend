@@ -85,7 +85,7 @@ class UpdateRegister extends Component {
                 </div>
 
                 <div className="form-outline form-white mb-2">
-                  <label className="form-label fs-6 fw-bold">
+                  <label className="form-label fs-6 fw-bold"> First Name:
                     <input 
                       type="text" 
                       name = "first_name" 
@@ -93,12 +93,12 @@ class UpdateRegister extends Component {
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
                       value={this.state.first_name}
-                      placeholder='First Name'
+                      placeholder={this.props.user.first_name}
                     />
                   </label>
                 </div>
                 <div className="form-outline form-white mb-2">
-                  <label className="form-label fs-6 fw-bold">
+                  <label className="form-label fs-6 fw-bold"> Last Name:
                     <input 
                       type="text" 
                       name = "last_name" 
@@ -106,12 +106,12 @@ class UpdateRegister extends Component {
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
                       value={this.state.last_name}
-                      placeholder='Last Name'
+                      placeholder={this.props.user.last_name}
                     />
                   </label>
                 </div>
                 <div className="form-outline form-white mb-2">
-                  <label className="form-label fs-6 fw-bold">
+                  <label className="form-label fs-6 fw-bold"> Username:
                     <input 
                       type="text" 
                       name = "username" 
@@ -119,7 +119,7 @@ class UpdateRegister extends Component {
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
                       value={this.state.username}
-                      placeholder='Username'
+                      placeholder={this.props.user.username}
                     />
                   </label>
                 </div>
@@ -138,7 +138,7 @@ class UpdateRegister extends Component {
                   </label>
                 </div>
                 <div className="form-outline form-white mb-2">           
-                  <label className="form-label fs-6 fw-bold">
+                  <label className="form-label fs-6 fw-bold"> Email:
                     <input 
                       type="text" 
                       name = "email" 
@@ -146,12 +146,12 @@ class UpdateRegister extends Component {
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
                       value={this.state.email}
-                      placeholder='Email'
+                      placeholder={this.props.user.email}
                     />
                   </label>
                 </div>
                 <div className="form-outline form-white mb-2">
-                  <label className="form-label fs-6 fw-bold">
+                  <label className="form-label fs-6 fw-bold"> Phone Number:
                     <input 
                       type="text" 
                       name = "phone_number" 
@@ -159,12 +159,12 @@ class UpdateRegister extends Component {
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
                       value={this.state.phone_number}
-                      placeholder='Phone Number'
+                      placeholder={this.props.user.phone_number}
                     />
                   </label>
                 </div>
                 <div className="form-outline form-white mb-2">            
-                  <label className="form-label fs-6 fw-bold">
+                  <label className="form-label fs-6 fw-bold"> Address:
                     <input 
                       type="text" 
                       name = "address" 
@@ -172,12 +172,12 @@ class UpdateRegister extends Component {
                       className="form-control form-control-lg" 
                       onChange={this.handleChange} 
                       value={this.state.address}
-                      placeholder='Address'
+                      placeholder={this.props.user.address}
                     />
                   </label>
                 </div>
                 <div className="form-outline form-white mb-2">
-                  <label className="form-label fs-6 fw-bold">
+                  <label className="form-label fs-6 fw-bold"> Zipcode:
                     <input 
                       type="text" 
                       name = "zipcode" 

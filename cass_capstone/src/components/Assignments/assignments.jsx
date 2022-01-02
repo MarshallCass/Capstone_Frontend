@@ -36,7 +36,7 @@ const DisplayAssignments = (props) => {
                 <Link to="/NewAssignment">
                     <button className="btn btn-outline-light btn-lg" type="button">New Assignment</button>
                 </Link>
-        </div>
+            </div>
         </div>
     );
 };

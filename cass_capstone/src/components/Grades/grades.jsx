@@ -4,10 +4,10 @@ import "./grades.css";
 // import jwtDecode from "jwt-decode";
 import { Link } from "react-router-dom";
 
+
 const DisplayGrades = (props) => {
 
-
-
+    
 
     return (
         <div>           
@@ -37,7 +37,7 @@ const DisplayGrades = (props) => {
             <Link to="/NewGrade">
             <button className="btn btn-outline-light btn-lg" type="button">Add Grades</button>
             </Link>
-        </div>
+            </div>
         </div>
     );
 };

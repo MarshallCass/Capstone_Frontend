@@ -18,7 +18,7 @@ const StudentProfile = (props) => {
                 </div>
                     <div className="d-grid gap-4">
                         <label className="fs-5 fw-normal">
-                            Name: {props.user.first_name} {props.user.last_name}
+                            Name: {props.student.first_name} {props.student.last_name}
                         </label>
                         <label className="fs-5 ">
                             Address: {props.student.address}
@@ -37,13 +37,13 @@ const StudentProfile = (props) => {
                         </label>
                     </div>
                     <br></br>
-        <div className="card-footer">
-            <Link to="/Parent">
-                <button className="btn btn-outline-light btn-lg" type="button">Parents/Guardian</button>
-            </Link>
+            <div className="card-footer">
+                <Link to="/Parent">
+                    <button className="btn btn-outline-light btn-lg" type="button">Parents/Guardian</button>
+                </Link>
+            </div>
         </div>
-        </div>
-        </div>
+      </div>
     </form>
 </div>
     );

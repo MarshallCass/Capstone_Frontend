@@ -21,9 +21,7 @@ return(
                         {props.students.map((student, index) => {
                             return(
                             <tr key={index}>                        
-                                {/* <Link to="/StudentProfile"> */}
                                     <td>{student.first_name}{student.last_name}</td>
-                                {/* </Link> */}
                             </tr>  
                             ) 
                         })}                 

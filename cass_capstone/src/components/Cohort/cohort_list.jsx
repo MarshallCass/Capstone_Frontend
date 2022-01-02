@@ -1,17 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import "./cohort.css";
 import { Link } from "react-router-dom";
 
-class DisplayCohort extends Component {
-        constructor(props) {
-            super(props)
-            this.state = {
+const DisplayCohort = (props) => {
+  
 
-        };
-    }
-
-
-    render (){
 
     return (
         <div>
@@ -23,17 +16,16 @@ class DisplayCohort extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                        {this.props.cohorts.map((cohort, index) => { 
-                            return(  
-                            <tr key={index}>          
-                                <td>{cohort.cohort_name}</td>
-                                <td>{cohort.student}</td>
-                                <div className="cohort">
-                                    <button className="btn btn-outline-light btn-lg" type="Button">Cohort</button>
+                            <tr>          
+                                <td>{props.cohort.cohort_name}</td>
+                                <td>{props.cohort.student}</td>
+                                <div className="student">
+                                    <Link to="/StudentProfile">
+                                        <button className="btn btn-outline-light btn-lg" type="Button">Student Profile</button>
+                                    </Link>
                                 </div>
                             </tr>
-                            )              
-                        })}
+                       
                 </tbody>
             </table>
             <div className="card-footer">
@@ -43,7 +35,6 @@ class DisplayCohort extends Component {
             </div>
         </div>
     );
-    };
 };
 
 export default DisplayCohort;

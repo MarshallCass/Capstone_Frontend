@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import 'react-router-dom';
 import './cohort.css';
-import { Link } from "react-router-dom";
 
 
 
@@ -25,10 +24,10 @@ class NewCohort extends Component {
         event.preventDefault();
         const cohort = {
             cohort_name: this.state.cohort_name,
-            student: this.state.student,
+            student: this.state.student.id,
         };
         this.props.addNewCohort(cohort);
-        this.setState({
+        this.setState({ 
             cohort_name: "",
             student: "",
         });
@@ -62,12 +61,13 @@ class NewCohort extends Component {
                   </label>
                 </div>
                 <div className="form-outline form-white mb-2">
-                  <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg">
-                    <option value=" " selected disabled hidden>Student</option>
+                  <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg" defaultValue={"Student"}>
+                    <option selected disabled hidden>Student</option>
                         {this.props.students.map((student, index) => {
                             return(
-                            <option key={index}                        
-                                value={this.state.student.id} onChange={this.handleChange}>
+                            <option key={index}
+                                value={this.state.student.id} 
+                                onChange={this.handleChange}>
                                 {student.first_name} {student.last_name}
                             </option>  
                             ) 
@@ -75,9 +75,7 @@ class NewCohort extends Component {
                     </select>
                 </div>
                 <div className="card-footer">
-                  <Link to="/Cohorts">
                     <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>
-                  </Link>
                 </div>
             </div>    
         </div>          
