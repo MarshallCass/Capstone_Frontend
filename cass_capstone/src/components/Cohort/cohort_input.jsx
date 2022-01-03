@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'react-router-dom';
 import './cohort.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -24,7 +25,7 @@ class NewCohort extends Component {
         event.preventDefault();
         const cohort = {
             cohort_name: this.state.cohort_name,
-            student: this.state.student.id,
+            student: this.state.student_id,
         };
         this.props.addNewCohort(cohort);
         this.setState({ 
@@ -68,14 +69,17 @@ class NewCohort extends Component {
                             <option key={index}
                                 value={this.state.student.id} 
                                 onChange={this.handleChange}>
-                                {student.first_name} {student.last_name}
+                               {student.student_id} {student.first_name} {student.last_name}
                             </option>  
                             ) 
                         })}                 
                     </select>
                 </div>
                 <div className="card-footer">
-                    <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>
+                        <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>
+                    <Link to="/Cohorts">  
+                        <button className="btn btn-outline-light btn-lg" type="submit"> Return To Cohorts </button>
+                    </Link>
                 </div>
             </div>    
         </div>          

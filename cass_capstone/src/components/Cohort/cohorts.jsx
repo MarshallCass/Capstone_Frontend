@@ -18,7 +18,7 @@ class DisplayCohorts extends Component {
                 <thead>
                         <tr>
                             <th> Cohort Name </th>
-                            <th> Student </th>
+                            <th> Number of Students </th>
                         </tr>
                 </thead>
                 <tbody>

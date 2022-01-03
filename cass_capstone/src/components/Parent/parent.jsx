@@ -30,18 +30,16 @@ const StudentProfile = (props) => {
                             Account Balance: $13.50{props.student.account_balance}
                         </label>
                         <label className="fs-5 fw-normal">
-                            Guardian: Mike Jones{props.student.guardian_one_id}
-                            <li>Phone: 727-489-2871</li>
-                            <li>Email: MJones@email.com</li>
+                            <Link to="/Parent">
+                                <button className="btn bt-outline-light btn-lg" type="button">Guardian: MJones{props.student.guardian_one_id}</button>
+                            </Link>
                         </label>
                         <label className="fs-5 fw-normal">
-                            Guardian: Lisa Jones{props.student.guardian_two_id}
-                            <li>Phone: 717-555-1212</li>
-                            <li>Email: LJones@email.com</li>
+                            <Link to="/Parent2">
+                                <button className="btn bt-outline-light btn-lg" type="button">Guardian: LJones{props.student.guardian_two_id}</button>
+                            </Link>
                         </label>
-                        <Link to="/StudentUpdate">
-                            <button className="btn btn-outline-light btn-lg" type="button">Student Grades</button>
-                        </Link>
+                        
                     </div>
                     <br></br>
             <div className="card-footer">

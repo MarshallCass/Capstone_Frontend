@@ -103,8 +103,9 @@ class NewAssignment extends Component {
                   
                 </div>
                 <div className="card-footer">
-                  <Link to="/Assignments">
                     <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>
+                  <Link to="/Assignments">
+                    <button className="btn btn-outline-light btn-lg" type="submit"> Return To Assignments </button>
                   </Link>
                 </div>
             </div>    

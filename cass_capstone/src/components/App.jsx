@@ -29,6 +29,7 @@ class App extends Component {
         this.state = {
             loggedInUser: null,
             students: [],
+            student: [],
             grades: [],
             assignments: [],
             cohorts: [],
@@ -161,7 +162,7 @@ class App extends Component {
 
     getStudent = async () => {
         const jwt = localStorage.getItem('token')
-        const response = await axios.get(`http://127.0.0.1:8000/students/students/${1}`, {Headers: {Authorization: 'Bearer' + jwt}});
+        const response = await axios.get(`http://127.0.0.1:8000/students/students/1/`, {Headers: {Authorization: 'Bearer' + jwt}});
         console.log(response)
         this.setState({
             student: response.data
@@ -347,12 +348,11 @@ class App extends Component {
                     <Route path='/Assignments' render={props => <DisplayAssignments {...props} assignments={this.state.assignments} />} />
                     <Route path='/NewAssignment' render={props => <NewAssignment {...props} addNewAssignment={this.addNewAssignment} />} />
                     <Route path='/UpdateAssignment' render={props => <UpdateAssignment {...props} updateAssignment={this.updateAssignment} />} />
-                    <Route path='/NewGrade' render={props => <NewGrade {...props} new_grade={this.state.new_grade} students={this.state.students} assignments={this.state.assignments}/>} />
+                    <Route path='/NewGrade' render={props => <NewGrade {...props} addNewGrade={this.addNewGrade} students={this.state.students} assignments={this.state.assignments}/>} />
                     <Route path='/Students' render={props => <StudentList {...props} students={this.state.students} />} />
                     <Route path='/NewStudent' render={props => <NewStudent {...props} addNewStudent={this.addNewStudent} />} />
                     <Route path='/StudentProfile' render={props => <StudentProfile {...props} student={this.state.student} />} />
                     <Route path='/StudentUpdate' render={props => <StudentUpdate {...props} updateStudent={this.updateStudent} />} />
-                    <Route path='/StudentList' render={props => <StudentDropdown {...props} students={this.state.students} />} />
                 </Switch>
             </div>
         )

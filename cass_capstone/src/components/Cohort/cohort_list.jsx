@@ -17,8 +17,10 @@ const DisplayCohort = (props) => {
                 </thead>
                 <tbody>
                             <tr>          
-                                <td>{props.cohort.cohort_name}</td>
-                                <td>{props.cohort.student}</td>
+                                {/* <td>{props.cohort.cohort_name}</td>
+                                <td>{props.cohort.student}</td> */}
+                                <td> Team Twister </td>
+                                <td> Madison Jones </td>
                                 <div className="student">
                                     <Link to="/StudentProfile">
                                         <button className="btn btn-outline-light btn-lg" type="Button">Student Profile</button>

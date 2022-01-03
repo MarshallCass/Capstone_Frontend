@@ -28,7 +28,7 @@ class NewGrade extends Component {
             assignement: this.state.assignment,
             comments: this.state.comments
         };
-        this.props.new_grade(grade);
+        this.props.addNewGrade(grade);
         this.setState({
             student: "",
             grade: "",
@@ -103,8 +103,9 @@ class NewGrade extends Component {
                   </label>
                 </div>
                 <div className="card-footer">
-                  <Link to="/Grades">
                     <button className="btn btn-outline-light btn-lg" type="submit"> Submit </button>
+                  <Link to="/Grades">
+                    <button className="btn btn-outline-light btn-lg" type="submit"> Return To Grades </button>
                   </Link>
                 </div>
             </div>  

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './register.css';
+import axios from 'axios';
 
 class Register extends Component {
     constructor(props) {
@@ -20,6 +21,34 @@ class Register extends Component {
             room_number:"Office",
          };
     }
+
+    registerNewUser = async (user) => {
+      console.log("User object from Register: ", user)
+      try {
+          const response = await axios.post(`http://127.0.0.1:8000/api/auth/register/`, user);
+          console.log(response)
+          this.registerNewUser = ({ 
+              'userName': user.username, 
+              'password': user.password, 
+              'email': user.email, 
+              'firstname': user.first_name, 
+              'lastname': user.last_name, 
+              'address': user.address, 
+              'zipcode': user.zipcode, 
+              'phone_number': user.phone_number,
+              'is_parent': user.is_parent, 
+              'is_staff': user.is_staff, 
+              'is_teacher': user.is_teacher,
+              'is_superuser': user.is_superuser,
+              'room_number' : user.room_number
+          })
+          window.location = ('/Login')
+      }
+      catch (error) {
+          console.log(error, 'Invalid input');
+      }
+  }
+
 
     handleChange = (event) => {
         this.setState({
@@ -53,7 +82,7 @@ class Register extends Component {
             room_number: this.state.room_number,
             is_superuser: this.state.is_superuser
         };
-        this.props.registerNewUser(user);
+        this.registerNewUser(user);
         this.setState({
             first_name:"",
             last_name:"",
@@ -63,10 +92,10 @@ class Register extends Component {
             phone_number:"",
             address:"",
             zipcode:"",
-            is_staff:"",
-            is_parent:"",
-            is_teacher:"",
-            is_superuser:"",
+            is_staff: false,
+            is_parent: false,
+            is_teacher: false,
+            is_superuser:false,
             room_number:"Office"
         });
     }
